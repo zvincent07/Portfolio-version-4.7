@@ -110,7 +110,7 @@ function ExperienceItem({ job }: ExperienceItemProps) {
       ref={itemRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="border-l-2 pl-5 py-3 pr-4 rounded-r-lg"
+      className="border-l-2 pl-4 sm:pl-5 py-3 pr-2 sm:pr-4 rounded-r-lg"
       style={{
         borderLeftColor: 'rgba(255, 70, 84, 0.4)',
         backgroundColor: 'rgba(255, 255, 255, 0)',
@@ -119,13 +119,13 @@ function ExperienceItem({ job }: ExperienceItemProps) {
       <p className="text-xs font-medium text-primary m-0 mb-1">{job.period}</p>
       <h3 className="text-lg font-semibold text-white m-0">{job.role}</h3>
       <p className="text-sm text-white/60 m-0 mb-3">{job.company}</p>
-      <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
+      <ul className="list-none p-0 m-0 flex flex-col gap-3 sm:gap-2.5">
         {job.details.map((detail, idx) => (
-          <li key={idx} className="text-sm text-white/80 leading-relaxed flex flex-col sm:flex-row sm:items-start gap-1">
-            <span className="text-white font-semibold shrink-0 sm:min-w-[150px] md:min-w-[200px]">
+          <li key={idx} className="text-sm text-white/80 leading-relaxed block sm:flex sm:flex-row sm:items-start gap-1">
+            <span className="text-white font-semibold shrink-0 inline sm:inline-block sm:min-w-[150px] md:min-w-[200px] mr-1.5 sm:mr-0">
               {detail.title}:
             </span>
-            <span>{detail.text}</span>
+            <span className="inline">{detail.text}</span>
           </li>
         ))}
       </ul>

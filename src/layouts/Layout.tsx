@@ -272,13 +272,28 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               duration: 3000,
             });
           }}
-          className="flex items-center justify-center w-12 h-12 rounded-xl text-white/80 hover:text-primary active:scale-95 transition-all duration-300 bg-white/5 border border-white/5 hover:border-primary/30"
+          className="flex items-center justify-center w-10 h-10 rounded-lg text-white/80 hover:text-primary active:scale-95 transition-all duration-300 bg-white/5 border border-white/5 hover:border-primary/30"
           title="Download CV"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
+          <span className="text-[10px] font-mono font-bold">CV</span>
         </a>
+
+        {/* Download Resume */}
+        <a
+          href="/john-vincent-laylo-resume.pdf"
+          download="john-vincent-laylo-resume.pdf"
+          onClick={() => {
+            showToast({
+              message: 'Resume downloaded successfully.',
+              variant: 'success',
+              duration: 3000,
+            });
+          }}
+          className="flex items-center justify-center w-10 h-10 rounded-lg text-white/80 hover:text-primary active:scale-95 transition-all duration-300 bg-white/5 border border-white/5 hover:border-primary/30"
+          title="Download Resume"
+         >
+           <span className="text-[10px] font-mono font-bold">RES</span>
+         </a>
       </nav>
 
       {/* Snowflakes Toggle Button */}

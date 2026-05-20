@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { animate } from 'animejs';
 import type { LucideIcon } from 'lucide-react';
-import { Cloud, Cpu, GitBranch, Layout } from 'lucide-react';
+import { Cloud, Cpu, GitBranch, Layout, Database, Network } from 'lucide-react';
 
 interface TechStackCategory {
   title: string;
@@ -12,23 +12,33 @@ interface TechStackCategory {
 const techStack: TechStackCategory[] = [
   {
     title: 'Web Development',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'ShadCN'],
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'ShadCN'],
     icon: Layout,
   },
   {
     title: 'Backend & Cloud',
-    items: ['Node.js', 'Express.js', 'Flask', 'Docker', 'Vercel'],
+    items: ['Node.js', 'Express.js', 'Flask', 'REST APIs', /* 'Docker', 'AWS', 'CI/CD', */],
     icon: Cloud,
   },
   {
-    title: 'AI & Data',
-    items: ['Prompt Engineering', 'n8n', 'PostgreSQL', 'MongoDB'],
+    title: 'AI & Automation',
+    items: ['Prompt Engineering', 'n8n', 'OpenAI API', 'LLM Integration'],
     icon: Cpu,
   },
   {
-    title: 'Workflow',
-    items: ['Git', 'Figma', 'Postman'],
+    title: 'Database',
+    items: ['PostgreSQL', 'MongoDB', 'Redis', 'SQL Optimization'],
+    icon: Database,
+  },
+  {
+    title: 'Tools & Workflow',
+    items: ['Git', 'Figma', 'Postman', 'Agile / Scrum', 'Technical Documentation'],
     icon: GitBranch,
+  },
+  {
+    title: 'IT Support & Networking',
+    items: ['IT Support', 'Troubleshooting', 'Networking Basics', 'Hardware & Software Support'],
+    icon: Network,
   },
 ];
 

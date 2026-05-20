@@ -357,15 +357,18 @@ function App() {
                   <BadgeCheck ref={badgeRef} className="text-primary fill-white opacity-0 absolute right-0 top-1/2 -translate-y-1/2" size={20} />
                 </span>
                 <br />
-                <span className="text-[1.1rem] text-white/60 font-medium">Developer & Business Analyst</span>
+                <span className="text-[1.1rem] text-white/60 font-medium">Dev, Analyst & IT Support</span>
               </p>
             </div>
           </div>
 
           <div ref={aboutRef} className="px-4 sm:px-8 pt-0 pb-0">
             <SectionHeader title="About me" />
-            <p className="text-[1rem] leading-relaxed text-white/80">
-              I am a Developer & Business Analyst who bridges technical complexity and business objectives by building scalable, data-driven applications. I leverage AI-powered workflows and modern development practices to deliver reliable, efficient, and user-focused digital solutions.
+            <p className="hidden sm:block text-[1rem] leading-relaxed text-white/80">
+              I am a Developer, Business Analyst, and IT Support professional who bridges technical complexity and business objectives by building scalable, user-focused applications. I leverage AI-powered workflows and modern development practices to deliver reliable and efficient digital solutions.
+            </p>
+            <p className="block sm:hidden text-[1rem] leading-relaxed text-white/80">
+              Developer, Business Analyst, and IT Support professional focused on scalable applications, AI-powered workflows, and user-focused digital solutions.
             </p>
 
             <TechStack />

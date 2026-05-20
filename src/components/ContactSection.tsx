@@ -254,7 +254,7 @@ export const ContactSection = forwardRef<HTMLElement>((_, ref) => {
                 <span>GitHub</span>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/john-vincent-laylo-322b023a6/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-zinc-900 border border-zinc-800/80 text-zinc-400 hover:text-primary hover:border-primary/30 transition-all text-sm font-medium"
