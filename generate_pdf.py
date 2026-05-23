@@ -1,0 +1,475 @@
+import subprocess
+import os
+import pypdf
+
+# Path configuration
+HTML_PATH = os.path.abspath("cv.html")
+CV_PDF_PATH = os.path.abspath("public/john-vincent-laylo-cv.pdf")
+RESUME_PDF_PATH = os.path.abspath("public/john-vincent-laylo-resume.pdf")
+CHROME_PATH = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+
+def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10pt"):
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>John Vincent G. Laylo - CV</title>
+    <style>
+        @page {{
+            size: A4;
+            margin: {margin_val};
+        }}
+        body {{
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.35;
+            font-size: {font_size_body};
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }}
+        .header {{
+            text-align: center;
+            margin-bottom: {padding_val};
+        }}
+        .name {{
+            font-size: 1.85em;
+            font-weight: 800;
+            color: #111823;
+            letter-spacing: -0.02em;
+            margin: 0 0 2px 0;
+            text-transform: uppercase;
+        }}
+        .title {{
+            font-size: 1.0em;
+            font-weight: 600;
+            color: #ff4654;
+            letter-spacing: 0.08em;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+        }}
+        .contact-info {{
+            font-size: 0.85em;
+            color: #64748b;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 12px;
+        }}
+        .contact-info a {{
+            color: #64748b;
+            text-decoration: none;
+        }}
+        .contact-info a:hover {{
+            color: #ff4654;
+        }}
+        .separator {{
+            color: #cbd5e1;
+        }}
+        .section {{
+            margin-bottom: {padding_val};
+        }}
+        .section:last-of-type {{
+            margin-bottom: 0;
+        }}
+        .section-title {{
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #111823;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0 0 6px 0;
+            padding-bottom: 2px;
+            border-bottom: 1.5px solid #ff4654;
+        }}
+        .section-content {{
+            margin: 0;
+        }}
+        .summary-text {{
+            color: #334155;
+            text-align: justify;
+            margin: 0;
+        }}
+        /* Skill grid */
+        .skills-container {{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px 16px;
+        }}
+        .skill-group {{
+            font-size: 0.9em;
+        }}
+        .skill-label {{
+            font-weight: 700;
+            color: #111823;
+            display: inline;
+        }}
+        .skill-list {{
+            color: #334155;
+            display: inline;
+        }}
+        /* Experience & Education list */
+        .item {{
+            margin-bottom: 8px;
+        }}
+        .item:last-child {{
+            margin-bottom: 0;
+        }}
+        .item-header {{
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            color: #111823;
+            margin-bottom: 2px;
+            font-size: 0.95em;
+        }}
+        .item-role {{
+            font-weight: 700;
+            color: #ff4654;
+        }}
+        .item-company-school {{
+            font-weight: 600;
+            color: #475569;
+        }}
+        .item-location-date {{
+            font-weight: 500;
+            color: #64748b;
+            font-size: 0.85em;
+        }}
+        .item-details {{
+            margin: 0;
+            padding-left: 14px;
+            color: #334155;
+            font-size: 0.9em;
+        }}
+        .item-details li {{
+            margin-bottom: 3px;
+            text-align: justify;
+        }}
+        .item-details li:last-child {{
+            margin-bottom: 0;
+        }}
+        .bullet-title {{
+            font-weight: 700;
+            color: #111823;
+        }}
+        /* Project list */
+        .project-item {{
+            margin-bottom: 6px;
+        }}
+        .project-item:last-child {{
+            margin-bottom: 0;
+        }}
+        .project-header {{
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 2px;
+            font-size: 0.95em;
+        }}
+        .project-title-tech {{
+            color: #111823;
+        }}
+        .project-tech {{
+            font-weight: 500;
+            color: #64748b;
+            font-size: 0.85em;
+            font-style: italic;
+        }}
+        .project-link {{
+            font-weight: 500;
+            color: #0f766e;
+            font-size: 0.85em;
+            text-decoration: none;
+        }}
+        .project-link:hover {{
+            text-decoration: underline;
+            color: #ff4654;
+        }}
+        .project-description {{
+            color: #334155;
+            margin: 0;
+            padding-left: 14px;
+            font-size: 0.9em;
+        }}
+        .project-description li {{
+            margin-bottom: 2px;
+        }}
+        .project-description li:last-child {{
+            margin-bottom: 0;
+        }}
+        .education-subtext {{
+            font-size: 0.9em;
+            color: #334155;
+            margin-bottom: 2px;
+        }}
+        .education-courses {{
+            font-size: 0.85em;
+            color: #475569;
+        }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="name">John Vincent G. Laylo</h1>
+        <div class="title">Developer, Business Analyst & IT Support Professional</div>
+        <div class="contact-info">
+            <span>Email: <a href="mailto:zvincent.dev@gmail.com">zvincent.dev@gmail.com</a></span>
+            <span class="separator">|</span>
+            <span>Phone: +63 927 666 3575</span>
+            <span class="separator">|</span>
+            <span>Location: Batangas, Lipa City, Philippines</span>
+            <br>
+            <span>GitHub: <a href="https://github.com/zvincent07" target="_blank">github.com/zvincent07</a></span>
+            <span class="separator">|</span>
+            <span>LinkedIn: <a href="https://linkedin.com/in/john-vincent-laylo-322b023a6" target="_blank">linkedin.com/in/john-vincent-laylo-322b023a6</a></span>
+            <span class="separator">|</span>
+            <span>Portfolio: <a href="https://zvincent-4-7.vercel.app/" target="_blank">zvincent-4-7.vercel.app</a></span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <div class="section-content">
+            <p class="summary-text">
+                Detail-oriented Developer, Business Analyst, and IT Support Professional with a Bachelor of Science in Information Technology (Major in Business Analytics). Experienced in bridging technical complexity and business objectives by designing, building, and deploying scalable, user-focused web applications. Proven track record in providing Tier-1 IT support, setting up workstations, automating operations, and maintaining robust system documentation.
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="section-content">
+            <div class="skills-container">
+                <div class="skill-group">
+                    <div class="skill-label">Web Development:</div>
+                    <div class="skill-list">React, Next.js, TypeScript, Tailwind CSS, Zustand, ShadCN</div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Backend & Cloud:</div>
+                    <div class="skill-list">Node.js, Express.js, Flask, REST APIs</div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">AI & Automation:</div>
+                    <div class="skill-list">Prompt Engineering, n8n, OpenAI API, LLM Integration</div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Database Systems:</div>
+                    <div class="skill-list">PostgreSQL, MongoDB, MySQL, Redis, SQL Optimization</div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Tools & Workflows:</div>
+                    <div class="skill-list">Git, Figma, Postman, Agile / Scrum, Tech Documentation</div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">IT Support & Networks:</div>
+                    <div class="skill-list">IT Support, Troubleshooting, Cisco Packet Tracer, Hardware/Software</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Professional Experience</div>
+        <div class="section-content">
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <span class="item-role">Technical Intern</span>
+                        <span class="separator">|</span>
+                        <span class="item-company-school">COMELEC (Government / Public Sector)</span>
+                    </div>
+                    <div class="item-location-date">Feb 2026 - May 2026</div>
+                </div>
+                <ul class="item-details">
+                    <li><span class="bullet-title">System Operations:</span> Facilitated voter registration processes and managed certificate issuance, ensuring 100% data accuracy and efficient document turnaround.</li>
+                    <li><span class="bullet-title">Technical Support:</span> Provided Tier-1 IT support, resolving hardware and software issues for staff and public-facing workstations to minimize operational downtime.</li>
+                    <li><span class="bullet-title">Workstation Setup:</span> Assisted in assembling, configuring, and deploying PC hardware and workstations for staff and public use.</li>
+                    <li><span class="bullet-title">Service Management:</span> Managed public inquiries and form-based service requests, acting as a bridge between technical systems and user-friendly service delivery.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <span class="item-role">Freelance Technical Consultant</span>
+                        <span class="separator">|</span>
+                        <span class="item-company-school">Self-Employed</span>
+                    </div>
+                    <div class="item-location-date">2022 - Present</div>
+                </div>
+                <ul class="item-details">
+                    <li><span class="bullet-title">Web Development:</span> Designed, built, and deployed responsive web applications and custom user interfaces for various clients.</li>
+                    <li><span class="bullet-title">IT Support & Troubleshooting:</span> Provided freelance technical support, troubleshooting hardware, software, and configuration issues for local clients.</li>
+                    <li><span class="bullet-title">Network Engineering:</span> Designed and simulated complex network topologies using Cisco Packet Tracer to support academic infrastructure projects.</li>
+                    <li><span class="bullet-title">Scripting & Automation:</span> Developed Python-based data processing scripts in Google Colab to automate repetitive tasks for various clients.</li>
+                    <li><span class="bullet-title">Technical Documentation:</span> Authored comprehensive technical documentation, project specifications, and user guides.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Key Projects</div>
+        <div class="section-content">
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-title-tech">
+                        <strong>Dayframe</strong> <span class="project-tech">(Next.js 15, Tauri, Rust, MongoDB, TypeScript)</span>
+                    </div>
+                    <div>
+                        <a class="project-link" href="https://github.com/zvincent07/dayframe" target="_blank">github.com/zvincent07/dayframe</a>
+                    </div>
+                </div>
+                <ul class="project-description">
+                    <li>A desktop productivity journaling app bridging Next.js and Tauri/Rust with a local daemon shell for fast startup and offline-native feel, resolving slow launches and poor desktop integration.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-title-tech">
+                        <strong>InvenTrack</strong> <span class="project-tech">(PostgreSQL, Express, React, Node.js, Tailwind, RBAC)</span>
+                    </div>
+                    <div>
+                        <a class="project-link" href="https://inventrackgso.onrender.com" target="_blank">inventrackgso.onrender.com</a>
+                    </div>
+                </div>
+                <ul class="project-description">
+                    <li>Centralized asset lifecycle management system with role-based access control and structured state logs for auditor use, eliminating manual spreadsheet mismatches and auditing bottlenecks.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-title-tech">
+                        <strong>QRoom</strong> <span class="project-tech">(MySQL, Express, React, Node.js, Bootstrap, QR)</span>
+                    </div>
+                    <div>
+                        <a class="project-link" href="https://qroom-omega.vercel.app/" target="_blank">qroom-omega.vercel.app</a>
+                    </div>
+                </div>
+                <ul class="project-description">
+                    <li>Real-time classroom availability tracker with QR code check-ins for instant status updates and maintenance feedback, replacing slow manual whiteboard updates.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="section-content">
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <span class="item-role">BSIT</span>
+                        <span class="separator">|</span>
+                        <span class="item-company-school">Batangas State University</span>
+                    </div>
+                    <div class="item-location-date">2022 - 2026</div>
+                </div>
+                <div class="education-subtext">
+                    <strong>Major in Business Analytics</strong> | Specialized in data-driven decision making and software engineering.
+                </div>
+                <div class="education-courses">
+                    <strong>Relevant Courses:</strong> Fundamentals of Business Analytics, Fundamentals of Analytics Modeling, Fundamentals of Enterprise Data Management, Analytics Techniques & Tools, Analytics Application
+                </div>
+            </div>
+            <div class="item" style="margin-top: 4px;">
+                <div class="item-header">
+                    <div>
+                        <span class="item-role">Senior High School Diploma</span>
+                        <span class="separator">|</span>
+                        <span class="item-company-school">The Mabini Academy</span>
+                    </div>
+                    <div class="item-location-date">2020 - 2022</div>
+                </div>
+                <div class="education-subtext">
+                    <strong>STEM Strand</strong> (Science, Technology, Engineering, and Mathematics) | Built logic and calculus foundations.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Languages & Strengths</div>
+        <div class="section-content">
+            <div class="skills-container">
+                <div class="skill-group">
+                    <div class="skill-label">Languages:</div>
+                    <div class="skill-list">English (Fluent), Filipino (Native)</div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Key Strengths:</div>
+                    <div class="skill-list">Systems Analysis & Design, Technical Writing, Agile / Scrum</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>"""
+
+def compile_pdf(padding_val="10px", margin_val="0.5in", font_size_body="10pt"):
+    html_content = get_html_content(padding_val, margin_val, font_size_body)
+    with open(HTML_PATH, "w", encoding="utf-8") as f:
+        f.write(html_content)
+        
+    print(f"Generated {HTML_PATH} (body size: {font_size_body}, margins: {margin_val})")
+    
+    # Run Chrome command to print to pdf
+    cmd = [
+        CHROME_PATH,
+        "--headless",
+        "--disable-gpu",
+        "--no-pdf-header-footer",
+        f"--print-to-pdf={CV_PDF_PATH}",
+        HTML_PATH
+    ]
+    
+    subprocess.run(cmd, check=True)
+    
+    # Verify page count
+    reader = pypdf.PdfReader(CV_PDF_PATH)
+    page_count = len(reader.pages)
+    print(f"PDF Page Count: {page_count}")
+    return page_count
+
+# Search for the right font size to hit exactly 1 page
+params = [
+    # (padding, margin, font_size)
+    ("12px", "0.5in", "10pt"),
+    ("10px", "0.45in", "9.8pt"),
+    ("8px", "0.45in", "9.5pt"),
+    ("7px", "0.4in", "9.2pt"),
+    ("6px", "0.4in", "9pt"),
+    ("5px", "0.35in", "8.5pt"),
+]
+
+success = False
+for pad, marg, size in params:
+    page_count = compile_pdf(padding_val=pad, margin_val=marg, font_size_body=size)
+    if page_count == 1:
+        print(f"Success! Fits exactly on 1 page with font size {size}.")
+        success = True
+        break
+
+if not success:
+    print("Warning: Could not fit onto 1 page with standard parameters. Squeezing further...")
+    compile_pdf(padding_val="4px", margin_val="0.3in", font_size_body="8pt")
+
+# Compile Graphical Resume PDF
+RESUME_HTML_PATH = os.path.abspath("resume.html")
+if os.path.exists(RESUME_HTML_PATH):
+    print("Running Chrome print-to-pdf for Graphical Resume...")
+    resume_cmd = [
+        CHROME_PATH,
+        "--headless",
+        "--disable-gpu",
+        "--no-pdf-header-footer",
+        f"--print-to-pdf={RESUME_PDF_PATH}",
+        RESUME_HTML_PATH
+    ]
+    subprocess.run(resume_cmd, check=True)
+    print("Successfully generated graphical Resume PDF!")
+
+print("Successfully generated and checked CV and Resume PDFs!")

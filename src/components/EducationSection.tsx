@@ -20,10 +20,11 @@ const education: EducationEntry[] = [
     school: 'Batangas State University',
     details: 'Specialized in data-driven decision making and software engineering. Bridged the gap between raw data and actionable business insights through full-stack development.',
     courses: [
-      'Enterprise Data Management',
-      'Analytics Modeling',
-      'Systems Analysis & Design',
-      'Technopreneurship'
+      'Fundamentals of Business Analytics',
+      'Fundamentals of Analytics Modeling',
+      'Fundamentals of Enterprise Data Management',
+      'Analytics Techniques & Tools',
+      'Analytics Application'
     ]
   },
   {

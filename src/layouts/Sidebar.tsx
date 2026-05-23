@@ -1,4 +1,4 @@
-import { User, Briefcase, GraduationCap, Mail, Building2 } from 'lucide-react';
+import { User, Briefcase, GraduationCap, Mail, Building2, FileText, FileBadge } from 'lucide-react';
 import { useToast } from '../components/Toast';
 
 const LinkedInIcon = () => (
@@ -94,52 +94,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeNav, setAct
       </div>
 
       <nav className="flex-1 flex flex-col w-full gap-2 mb-4">
-        <div className="w-full">
-          <a
-            href="/john-vincent-laylo-cv.pdf"
-            download="john-vincent-laylo-cv.pdf"
-            onClick={(e) => {
-              e.stopPropagation();
-              showToast({
-                message: 'Curriculum Vitae downloaded successfully.',
-                variant: 'success',
-                duration: 3000,
-              });
-            }}
-            className={`flex items-center text-white no-underline transition-all duration-300 rounded-md border border-white/5 bg-white/5 hover:border-primary/30 hover:text-primary p-2.5 ${isCollapsed ? 'justify-center mx-auto w-10 h-10' : 'w-full'}`}
-            title="Download CV"
-          >
-            <svg className="w-[18px] h-[18px] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            <span className={`whitespace-nowrap font-mono text-xs transition-all duration-300 origin-left overflow-hidden ${isCollapsed ? 'max-w-0 opacity-0 ml-0' : 'max-w-[120px] opacity-100 ml-3'}`}>
-              Download CV
-            </span>
-          </a>
-        </div>
-        <div className="w-full">
-          <a
-            href="/john-vincent-laylo-resume.pdf"
-            download="john-vincent-laylo-resume.pdf"
-            onClick={(e) => {
-              e.stopPropagation();
-              showToast({
-                message: 'Resume downloaded successfully.',
-                variant: 'success',
-                duration: 3000,
-              });
-            }}
-            className={`flex items-center text-white no-underline transition-all duration-300 rounded-md border border-white/5 bg-white/5 hover:border-primary/30 hover:text-primary p-2.5 ${isCollapsed ? 'justify-center mx-auto w-10 h-10' : 'w-full'}`}
-            title="Download Resume"
-          >
-            <svg className="w-[18px] h-[18px] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className={`whitespace-nowrap font-mono text-xs transition-all duration-300 origin-left overflow-hidden ${isCollapsed ? 'max-w-0 opacity-0 ml-0' : 'max-w-[120px] opacity-100 ml-3'}`}>
-              Download Resume
-            </span>
-          </a>
-        </div>
+
         <ul className="list-none p-0 m-0 flex flex-col gap-2 w-full">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -158,6 +113,48 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeNav, setAct
               </li>
             );
           })}
+        </ul>
+
+        {/* Divider */}
+        <div className={`w-full h-[1px] bg-white/10 my-1 transition-all duration-300 ${isCollapsed ? 'opacity-50' : 'opacity-100'}`} />
+
+        <ul className="list-none p-0 m-0 flex flex-col gap-2 w-full">
+          <li className="w-full">
+            <a
+              href="/john-vincent-laylo-cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center text-white no-underline text-sm transition-all duration-300 rounded-md p-2.5 opacity-70 hover:bg-white/5 hover:opacity-100 hover:text-primary ${isCollapsed ? 'justify-center' : ''}`}
+              title="Open CV"
+              onClick={(e) => {
+                e.stopPropagation();
+                showToast({ message: 'Opening Curriculum Vitae...', variant: 'success', duration: 3000 });
+              }}
+            >
+              <FileText size={18} className="shrink-0" />
+              <span className={`whitespace-nowrap font-medium transition-all duration-300 origin-left overflow-hidden ${isCollapsed ? 'max-w-0 opacity-0 ml-0' : 'max-w-[120px] opacity-100 ml-3'}`}>
+                Open CV
+              </span>
+            </a>
+          </li>
+          <li className="w-full">
+            <a
+              href="/john-vincent-laylo-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center text-white no-underline text-sm transition-all duration-300 rounded-md p-2.5 opacity-70 hover:bg-white/5 hover:opacity-100 hover:text-primary ${isCollapsed ? 'justify-center' : ''}`}
+              title="Open Resume"
+              onClick={(e) => {
+                e.stopPropagation();
+                showToast({ message: 'Opening Resume...', variant: 'success', duration: 3000 });
+              }}
+            >
+              <FileBadge size={18} className="shrink-0" />
+              <span className={`whitespace-nowrap font-medium transition-all duration-300 origin-left overflow-hidden ${isCollapsed ? 'max-w-0 opacity-0 ml-0' : 'max-w-[120px] opacity-100 ml-3'}`}>
+                Open Resume
+              </span>
+            </a>
+          </li>
         </ul>
       </nav>
 

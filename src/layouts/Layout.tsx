@@ -261,38 +261,40 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Divider */}
         <div className="h-6 w-[1px] bg-white/10" />
 
-        {/* Download CV */}
+        {/* Open CV */}
         <a
           href="/john-vincent-laylo-cv.pdf"
-          download="john-vincent-laylo-cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => {
             showToast({
-              message: 'Curriculum Vitae downloaded successfully.',
+              message: 'Opening Curriculum Vitae...',
               variant: 'success',
               duration: 3000,
             });
           }}
-          className="flex items-center justify-center w-10 h-10 rounded-lg text-white/80 hover:text-primary active:scale-95 transition-all duration-300 bg-white/5 border border-white/5 hover:border-primary/30"
-          title="Download CV"
+          className="flex flex-col items-center justify-center w-12 h-12 rounded-xl text-white/60 hover:text-white hover:bg-white/5 active:scale-95 transition-all duration-300"
+          title="Open CV"
         >
-          <span className="text-[10px] font-mono font-bold">CV</span>
+          <span className="text-[11px] font-mono font-bold">CV</span>
         </a>
 
-        {/* Download Resume */}
+        {/* Open Resume */}
         <a
           href="/john-vincent-laylo-resume.pdf"
-          download="john-vincent-laylo-resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => {
             showToast({
-              message: 'Resume downloaded successfully.',
+              message: 'Opening Resume...',
               variant: 'success',
               duration: 3000,
             });
           }}
-          className="flex items-center justify-center w-10 h-10 rounded-lg text-white/80 hover:text-primary active:scale-95 transition-all duration-300 bg-white/5 border border-white/5 hover:border-primary/30"
-          title="Download Resume"
+          className="flex flex-col items-center justify-center w-12 h-12 rounded-xl text-white/60 hover:text-white hover:bg-white/5 active:scale-95 transition-all duration-300"
+          title="Open Resume"
          >
-           <span className="text-[10px] font-mono font-bold">RES</span>
+           <span className="text-[11px] font-mono font-bold">RES</span>
          </a>
       </nav>
 

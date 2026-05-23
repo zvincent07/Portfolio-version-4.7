@@ -56,3 +56,22 @@ A premium, highly interactive, and responsive portfolio web application designed
    npm run build
    ```
    Compiles static assets into the `/dist` directory.
+
+---
+
+## 📄 ATS-First CV & Graphical Resume Generation
+
+The portfolio features programmatically generated PDFs: an ATS-friendly single-column CV, and a custom two-column Graphical Resume with a profile picture. The source text and layout are defined in HTML templates and compiled using Chrome in headless mode.
+
+### How to update and compile:
+1. **Modify the Source:**
+   Edit the HTML and stylesheet in `cv.html` (for the ATS CV) or `resume.html` (for the Graphical Resume) in the root of the project to update text or layout details.
+
+2. **Run the Compiler:**
+   Run the Python automation script to compile the HTML into the final PDFs:
+   ```bash
+   python generate_pdf.py
+   ```
+
+*Note: The script requires `pypdf` (`pip install pypdf`) and Chrome installed at the standard Windows path. It automatically runs multi-pass layout optimization to adjust typography and margins so the output fits perfectly onto a single page.*
+
