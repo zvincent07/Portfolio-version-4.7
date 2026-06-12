@@ -14,6 +14,12 @@ interface EducationEntry {
 
 const education: EducationEntry[] = [
   {
+    period: '2026',
+    degree: 'Computer Systems Servicing NC II',
+    school: 'LCTI Lipa City Training Institute',
+    details: 'National Certificate II certification program covering computer systems assembly, hardware/software configuration, networking setups, and systematic diagnostics & troubleshooting.'
+  },
+  {
     period: '2022 — 2026',
     degree: 'Bachelor of Science in Information Technology',
     major: 'Major in Business Analytics',

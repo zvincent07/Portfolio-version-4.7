@@ -5,8 +5,8 @@
     <title>John Vincent G. Laylo - Resume</title>
     <style>
         @page {
-            size: A4;
-            margin: 0.25in;
+            size: letter;
+            margin: 0.4in 0.42in 0.35in 0.42in;
         }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -14,36 +14,30 @@
             background: #fff;
             margin: 0;
             padding: 0;
-            line-height: 1.42;
-            font-size: 9.5pt;
+            line-height: 1.38;
+            font-size: 8.9pt;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
-        .container {
-            display: flex;
-            gap: 22px;
-        }
-        .left-column {
-            width: 32%;
+        .resume-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            border-right: 1.5px solid #e2e8f0;
-            padding-right: 15px;
+            gap: 15px;
         }
-        .right-column {
-            width: 68%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding-left: 5px;
-            font-size: 10.2pt;
-        }
+        /* HEADER SECTION */
         .header {
-            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ff4654;
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+        .header-text {
+            flex: 1;
         }
         .name {
-            font-size: 2.1em;
+            font-size: 2.3em;
             font-weight: 800;
             color: #111823;
             letter-spacing: -0.02em;
@@ -54,7 +48,7 @@
             font-size: 1.05em;
             font-weight: 600;
             color: #ff4654;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             margin: 0 0 6px 0;
             text-transform: uppercase;
         }
@@ -62,64 +56,85 @@
             font-size: 0.85em;
             color: #64748b;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+            line-height: 1.4;
         }
         .contact-info a {
             color: #64748b;
             text-decoration: none;
         }
+        .contact-info a:hover {
+            color: #ff4654;
+        }
+        .contact-info .dot {
+            margin: 0 5px;
+            color: #cbd5e1;
+            font-weight: bold;
+        }
+        .header-picture {
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
         .profile-picture {
-            width: 140px;
-            height: 140px;
+            width: 82px;
+            height: 82px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 15px;
             border: 2px solid #ff4654;
+            display: block;
         }
+
+        /* SECTION HEADERS */
         .section-title {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #111823;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin: 0 0 10px 0;
-            padding-bottom: 2px;
-            border-bottom: 1.5px solid #ff4654;
-        }
-        .left-section-title {
             font-size: 1.05em;
             font-weight: 700;
             color: #111823;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin: 0 0 4px 0;
+            margin: 0 0 8px 0;
             padding-bottom: 2px;
-            border-bottom: 1.5px solid #e2e8f0;
+            border-bottom: 1.5px solid #ff4654;
         }
+        .side-section-title {
+            font-size: 1.05em;
+            font-weight: 700;
+            color: #111823;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0 0 8px 0;
+            padding-bottom: 2px;
+            border-bottom: 1.5px solid #cbd5e1;
+        }
+
         .summary-text {
             color: #334155;
             text-align: justify;
             margin: 0;
-            line-height: 1.55;
+            line-height: 1.5;
         }
-        .skill-group {
-            margin-bottom: 4px;
+
+        /* TWO-COLUMN CONTAINER */
+        .container {
+            display: flex;
+            gap: 20px;
         }
-        .skill-label {
-            font-weight: 700;
-            color: #111823;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            margin-bottom: 0px;
+        .left-column {
+            width: 63%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
-        .skill-list {
-            color: #334155;
-            font-size: 0.9em;
+        .right-column {
+            width: 37%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-left: 1.5px solid #e2e8f0;
+            padding-left: 18px;
         }
+
+        /* ITEMS (EXPERIENCE, PROJECTS, EDUCATION) */
         .item {
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
         .item:last-child {
             margin-bottom: 0;
@@ -152,20 +167,16 @@
             font-size: 0.9em;
         }
         .item-details li {
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             text-align: justify;
         }
         .item-details li:last-child {
             margin-bottom: 0;
         }
-        .right-column .item {
-            margin-bottom: 18px;
-        }
-        .right-column .item:last-child {
-            margin-bottom: 0;
-        }
+
+        /* PROJECTS */
         .project-item {
-            margin-bottom: 16px;
+            margin-bottom: 15px;
         }
         .project-item:last-child {
             margin-bottom: 0;
@@ -198,188 +209,223 @@
             padding-left: 14px;
             font-size: 0.9em;
         }
+
+        /* SKILLS SIDE LIST */
+        .skill-group {
+            margin-bottom: 6px;
+        }
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+        .skill-label {
+            font-weight: 700;
+            color: #111823;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 1px;
+        }
+        .skill-list {
+            color: #334155;
+            font-size: 0.9em;
+            line-height: 1.36;
+        }
+
         .education-subtext {
             font-size: 0.9em;
             color: #334155;
             margin-bottom: 2px;
+            line-height: 1.34;
         }
         .education-courses {
-            font-size: 0.85em;
+            font-size: 0.83em;
             color: #475569;
+            line-height: 1.3;
+            margin-top: 2px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- LEFT COLUMN -->
-        <div class="left-column">
-            <!-- PROFILE PICTURE -->
-            <div style="text-align: center;">
-                <img class="profile-picture" src="file:///Z:/Projects/my-portfolio-4th/src/assets/1x1%20size%20picture.png" alt="Profile Picture" />
-            </div>
-
-            <!-- CONTACT -->
-            <div class="contact-info">
-                <span>zvincent.dev@gmail.com</span>
-                <span>Batangas, Lipa City, Philippines</span>
-                <span>0927 666 3575</span>
-                <span><a href="https://github.com/zvincent07" target="_blank">github.com/zvincent07</a></span>
-                <span><a href="https://zvincent-4-7.vercel.app/" target="_blank">zvincent-4-7.vercel.app</a></span>
-            </div>
-
-            <!-- TECHNICAL SKILLS -->
-            <div>
-                <div class="left-section-title">Technical Skills</div>
-                <div class="skill-group">
-                    <div class="skill-label">Web Development</div>
-                    <div class="skill-list">React, Next.js, TypeScript, Tailwind CSS, Zustand, ShadCN</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-label">Backend & Cloud</div>
-                    <div class="skill-list">Node.js, Express.js, Flask, REST APIs</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-label">AI & Automation</div>
-                    <div class="skill-list">Prompt Engineering, n8n, OpenAI API, LLM Integration</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-label">Database</div>
-                    <div class="skill-list">PostgreSQL, MongoDB, Redis, SQL Optimization</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-label">Tools & Workflow</div>
-                    <div class="skill-list">Git, Figma, Postman, Agile / Scrum, Tech Documentation</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-label">IT & Networking</div>
-                    <div class="skill-list">IT Support, Troubleshooting, Networking Basics, Hardware/Software</div>
-                </div>
-            </div>
-
-            <!-- EDUCATION -->
-            <div>
-                <div class="left-section-title">Education</div>
-                <div class="item">
-                    <div style="font-weight: 700; color: #111823; font-size: 0.95em;">2022 - 2026</div>
-                    <div class="item-role">BSIT (Business Analytics)</div>
-                    <div class="item-company-school" style="margin-bottom: 2px;">Batangas State University</div>
-                    <div class="education-subtext">
-                        Bridged raw data and actionable insights through full-stack development and systems analysis.
-                    </div>
-                    <div class="education-courses">
-                        <strong>Courses:</strong> Fundamentals of Business Analytics, Fundamentals of Analytics Modeling, Fundamentals of Enterprise Data Management, Analytics Techniques & Tools, Analytics Application
-                    </div>
-                </div>
-                <div class="item">
-                    <div style="font-weight: 700; color: #111823; font-size: 0.95em;">2020 - 2022</div>
-                    <div class="item-role">SHS Diploma (STEM)</div>
-                    <div class="item-company-school" style="margin-bottom: 2px;">The Mabini Academy</div>
-                    <div class="education-subtext">
-                        Strong logic and calculus foundation.
-                    </div>
-                </div>
-            </div>
-
-            <!-- LANGUAGES & STRENGTHS -->
-            <div>
-                <div class="left-section-title">Languages & Strengths</div>
-                <div class="skill-group">
-                    <div class="skill-label" style="text-transform: none;">Languages</div>
-                    <div class="skill-list">English (Fluent) | Filipino (Native)</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-label" style="text-transform: none;">Key Strengths</div>
-                    <div class="skill-list">Systems Analysis & Design | Technical Writing | Agile / Scrum</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN -->
-        <div class="right-column">
-            <!-- HEADER -->
-            <div class="header">
+    <div class="resume-wrapper">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-text">
                 <h1 class="name">John Vincent G. Laylo</h1>
                 <div class="title">Developer, Business Analyst & IT Support Professional</div>
-            </div>
-
-            <!-- PROFILE -->
-            <div>
-                <div class="section-title">Profile</div>
-                <p class="summary-text">
-                    Developer, Business Analyst, and IT Support professional focused on scalable applications, AI-powered workflows, and user-focused digital solutions. Experienced in bridging technical complexity and business objectives through modern full-stack development, database design, and automated systems analysis.
-                </p>
-            </div>
-
-            <!-- EXPERIENCE -->
-            <div>
-                <div class="section-title">Experience</div>
-                <div class="item">
-                    <div class="item-header">
-                        <div>
-                            <span class="item-role">Technical Intern</span> | <span class="item-company-school">COMELEC (Public Sector)</span>
-                        </div>
-                        <div class="item-location-date">2026</div>
-                    </div>
-                    <ul class="item-details">
-                        <li><strong>System Operations:</strong> Facilitated voter registration processes and managed certificate issuance, ensuring 100% data accuracy and efficient document turnaround.</li>
-                        <li><strong>Technical Support:</strong> Provided Tier-1 IT support, resolving hardware and software issues for staff and public-facing workstations to minimize operational downtime.</li>
-                        <li><strong>Workstation Setup:</strong> Assisted in assembling, configuring, and deploying PC hardware and workstations for staff and public use.</li>
-                        <li><strong>Service Management:</strong> Managed public inquiries and form-based service requests, acting as a bridge between technical systems and user-friendly service delivery.</li>
-                    </ul>
-                </div>
-                <div class="item">
-                    <div class="item-header">
-                        <div>
-                            <span class="item-role">Freelance Technical Consultant</span> | <span class="item-company-school">Self-Employed</span>
-                        </div>
-                        <div class="item-location-date">2022 - Present</div>
-                    </div>
-                    <ul class="item-details">
-                        <li><strong>Web Development:</strong> Designed, built, and deployed responsive web applications and custom user interfaces for various clients.</li>
-                        <li><strong>IT Support & Troubleshooting:</strong> Provided freelance technical support, troubleshooting hardware, software, and configuration issues for local clients.</li>
-                        <li><strong>Network Engineering:</strong> Designed and simulated complex network topologies using Cisco Packet Tracer to support academic infrastructure projects.</li>
-                        <li><strong>Scripting & Automation:</strong> Developed Python-based data processing scripts in Google Colab to automate repetitive tasks for various clients.</li>
-                        <li><strong>Technical Documentation:</strong> Authored comprehensive technical documentation, project specifications, and user guides.</li>
-                    </ul>
+                <div class="contact-info">
+                    <span>zvincent.dev@gmail.com</span>
+                    <span class="dot">•</span>
+                    <span>Batangas, Lipa City, Philippines</span>
+                    <span class="dot">•</span>
+                    <span>0927 666 3575</span>
+                    <br>
+                    <span>GitHub: <a href="https://github.com/zvincent07" target="_blank">github.com/zvincent07</a></span>
+                    <span class="dot">•</span>
+                    <span>Portfolio: <a href="https://zvincent-4-7.vercel.app/" target="_blank">zvincent-4-7.vercel.app</a></span>
                 </div>
             </div>
+            <div class="header-picture">
+                <img class="profile-picture" src="file:///Z:/Projects/my-portfolio-4th/src/assets/1x1%20size%20picture.png" alt="Profile Picture" />
+            </div>
+        </header>
 
-            <!-- PROJECTS -->
-            <div>
-                <div class="section-title">Projects</div>
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title-tech">
-                            <strong>Dayframe</strong> <span class="project-tech">| Next.js 15, Tauri, Rust, MongoDB</span>
+        <section>
+            <div class="section-title">Profile</div>
+            <p class="summary-text">
+                Developer, Business Analyst, and IT Support professional focused on scalable applications, AI-powered workflows, and user-focused digital solutions. Experienced in bridging technical complexity and business objectives through modern full-stack development, database design, and automated systems analysis. Highly adaptable to changing environments, leveraging strong communication and collaborative problem-solving to align cross-functional teams with technical requirements.
+            </p>
+        </section>
+
+        <!-- BODY CONTAINER -->
+        <div class="container">
+            <!-- LEFT COLUMN (EXPERIENCE & PROJECTS) -->
+            <div class="left-column">
+                <!-- EXPERIENCE -->
+                <section>
+                    <div class="section-title">Experience</div>
+                    <div class="item">
+                        <div class="item-header">
+                            <div>
+                                <span class="item-role">Technical Intern</span> | <span class="item-company-school">COMELEC (Public Sector)</span>
+                            </div>
+                            <div class="item-location-date">2026</div>
                         </div>
-                        <a class="project-link" href="https://github.com/zvincent07/dayframe" target="_blank">github.com/zvincent07/dayframe</a>
+                        <ul class="item-details">
+                            <li><strong>System Operations:</strong> Facilitated voter registration processes and managed certificate issuance, ensuring 100% data accuracy and efficient document turnaround.</li>
+                            <li><strong>Technical Support:</strong> Provided Tier-1 IT support, resolving hardware and software issues for staff and public-facing workstations to minimize operational downtime.</li>
+                            <li><strong>Workstation Setup:</strong> Assisted in assembling, configuring, and deploying PC hardware and workstations for staff and public use.</li>
+                            <li><strong>Service Management:</strong> Managed public inquiries and form-based service requests, acting as a bridge between technical systems and user-friendly service delivery.</li>
+                        </ul>
                     </div>
-                    <ul class="project-description">
-                        <li>A desktop productivity journaling app bridging Next.js and Tauri/Rust with a local daemon shell for fast startup and native integration.</li>
-                    </ul>
-                </div>
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title-tech">
-                            <strong>InvenTrack</strong> <span class="project-tech">| PostgreSQL, Express, React, Node, RBAC</span>
+                    <div class="item">
+                        <div class="item-header">
+                            <div>
+                                <span class="item-role">Freelance Technical Consultant</span> | <span class="item-company-school">Self-Employed</span>
+                            </div>
+                            <div class="item-location-date">2022 - Present</div>
                         </div>
-                        <a class="project-link" href="https://inventrackgso.onrender.com" target="_blank">inventrackgso.onrender.com</a>
+                        <ul class="item-details">
+                            <li><strong>Web Development:</strong> Designed, built, and deployed responsive web applications and custom user interfaces for various clients.</li>
+                            <li><strong>IT Support & Troubleshooting:</strong> Provided freelance technical support, troubleshooting hardware, software, and configuration issues for local clients.</li>
+                            <li><strong>Network Engineering:</strong> Designed and simulated complex network topologies using Cisco Packet Tracer to support academic infrastructure projects.</li>
+                            <li><strong>Scripting & Automation:</strong> Developed Python-based data processing scripts in Google Colab to automate repetitive tasks for various clients.</li>
+                            <li><strong>Technical Documentation:</strong> Authored comprehensive technical documentation, project specifications, and user guides.</li>
+                        </ul>
                     </div>
-                    <ul class="project-description">
-                        <li>Centralized asset lifecycle management system with role-based access control and structured state logs for auditor use.</li>
-                    </ul>
-                </div>
-                <div class="project-item">
-                    <div class="project-header">
-                        <div class="project-title-tech">
-                            <strong>QRoom</strong> <span class="project-tech">| MySQL, Express, React, Node, QR</span>
+                </section>
+
+                <section>
+                    <div class="section-title">Projects</div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <div class="project-title-tech">
+                                <strong>Dayframe</strong> <span class="project-tech">| Next.js 15, Tauri, Rust, MongoDB</span>
+                            </div>
+                            <a class="project-link" href="https://github.com/zvincent07/dayframe" target="_blank">github.com/zvincent07/dayframe</a>
                         </div>
-                        <a class="project-link" href="https://qroom-omega.vercel.app/" target="_blank">qroom-omega.vercel.app</a>
+                        <ul class="project-description">
+                            <li>A desktop productivity journaling app bridging Next.js and Tauri/Rust with a local daemon shell for fast startup and native integration.</li>
+                            <li>Designed a modular frontend architecture in Next.js 15, integrating Rust APIs via Tauri to build a highly responsive and lightweight system utility.</li>
+                        </ul>
                     </div>
-                    <ul class="project-description">
-                        <li>Real-time classroom availability tracker with QR code check-ins for instant status updates and maintenance feedback.</li>
-                    </ul>
-                </div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <div class="project-title-tech">
+                                <strong>InvenTrack</strong> <span class="project-tech">| PostgreSQL, Express, React, Node, RBAC</span>
+                            </div>
+                            <a class="project-link" href="https://inventrackgso.onrender.com" target="_blank">inventrackgso.onrender.com</a>
+                        </div>
+                        <ul class="project-description">
+                            <li>Centralized asset lifecycle management system with role-based access control and structured state logs for auditor use.</li>
+                            <li>Implemented secure JSON Web Token (JWT) authentication and custom React hooks, reducing manual asset processing time by 40%.</li>
+                        </ul>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-header">
+                            <div class="project-title-tech">
+                                <strong>QRoom</strong> <span class="project-tech">| MySQL, Express, React, Node, QR</span>
+                            </div>
+                            <a class="project-link" href="https://qroom-omega.vercel.app/" target="_blank">qroom-omega.vercel.app</a>
+                        </div>
+                        <ul class="project-description">
+                            <li>Real-time classroom availability tracker with QR code check-ins for instant status updates and maintenance feedback.</li>
+                            <li>Designed dynamic database schemas and live REST endpoints to instantly reflect classroom bookings, improving space utilization across campus.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- RIGHT COLUMN (SKILLS, EDUCATION, LANGUAGES) -->
+            <div class="right-column">
+                <!-- TECHNICAL SKILLS -->
+                <section>
+                    <div class="side-section-title">Technical Skills</div>
+                    <div class="skill-group">
+                        <div class="skill-label">Web Development</div>
+                        <div class="skill-list">React, Next.js, TypeScript, Tailwind CSS, Zustand, ShadCN</div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-label">Backend & Cloud</div>
+                        <div class="skill-list">Node.js, Express.js, Flask, REST APIs, CI/CD</div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-label">AI & Automation</div>
+                        <div class="skill-list">Prompt Engineering, OpenAI API, LLM Integration</div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-label">Database</div>
+                        <div class="skill-list">PostgreSQL, MongoDB, Supabase, SQL Optimization</div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-label">Tools & Workflow</div>
+                        <div class="skill-list">Git, Figma, Postman, Agile / Scrum, Tech Documentation</div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-label">IT & Networking</div>
+                        <div class="skill-list">IT Support, PC Building, Troubleshooting, Active Directory, Windows Server, Networking Basics, Hardware/Software</div>
+                    </div>
+                </section>
+
+                <!-- EDUCATION -->
+                <section>
+                    <div class="side-section-title">Education</div>
+                    <div class="item">
+                        <div style="font-weight: 700; color: #111823; font-size: 0.95em;">2026</div>
+                        <div class="item-role">Computer Systems Servicing NC II</div>
+                        <div class="item-company-school" style="margin-bottom: 1px;">LCTI Lipa City Training Institute</div>
+                        <div class="education-subtext">
+                            National certification covering computer systems assembly, network setup, and troubleshooting.
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div style="font-weight: 700; color: #111823; font-size: 0.95em;">2022 - 2026</div>
+                        <div class="item-role">BSIT (Business Analytics)</div>
+                        <div class="item-company-school" style="margin-bottom: 1px;">Batangas State University</div>
+                        <div class="education-subtext">
+                            Bridged raw data and actionable insights through full-stack development and systems analysis.
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div style="font-weight: 700; color: #111823; font-size: 0.95em;">2020 - 2022</div>
+                        <div class="item-role">SHS Diploma (STEM)</div>
+                        <div class="item-company-school" style="margin-bottom: 1px;">The Mabini Academy</div>
+                        <div class="education-subtext">
+                            Strong logic and calculus foundation.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LANGUAGES & STRENGTHS -->
+                <section style="margin-bottom: 0;">
+                    <div class="side-section-title">Languages & Strengths</div>
+                    <div class="skill-group">
+                        <div class="skill-label" style="text-transform: none;">Languages</div>
+                        <div class="skill-list">English (Fluent) | Filipino (Native)</div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-label" style="text-transform: none;">Key Strengths</div>
+                        <div class="skill-list">Systems Analysis & Design | Technical Writing | Agile & Scrum | Communication & Collaboration | Rapid Adaptability | Troubleshooting & Logic</div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>

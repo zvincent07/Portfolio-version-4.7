@@ -250,15 +250,15 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Backend & Cloud:</div>
-                    <div class="skill-list">Node.js, Express.js, Flask, REST APIs</div>
+                    <div class="skill-list">Node.js, Express.js, Flask, REST APIs, CI/CD</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">AI & Automation:</div>
-                    <div class="skill-list">Prompt Engineering, n8n, OpenAI API, LLM Integration</div>
+                    <div class="skill-list">Prompt Engineering, OpenAI API, LLM Integration</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Database Systems:</div>
-                    <div class="skill-list">PostgreSQL, MongoDB, MySQL, Redis, SQL Optimization</div>
+                    <div class="skill-list">PostgreSQL, MongoDB, MySQL, Supabase, SQL Optimization</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Tools & Workflows:</div>
@@ -266,7 +266,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">IT Support & Networks:</div>
-                    <div class="skill-list">IT Support, Troubleshooting, Cisco Packet Tracer, Hardware/Software</div>
+                    <div class="skill-list">IT Support, PC Building, Troubleshooting, Active Directory, Windows Server, Cisco Packet Tracer, Hardware/Software</div>
                 </div>
             </div>
         </div>
@@ -362,6 +362,19 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
             <div class="item">
                 <div class="item-header">
                     <div>
+                        <span class="item-role">Computer Systems Servicing NC II</span>
+                        <span class="separator">|</span>
+                        <span class="item-company-school">LCTI Lipa City Training Institute</span>
+                    </div>
+                    <div class="item-location-date">2026</div>
+                </div>
+                <div class="education-subtext">
+                    National certification covering computer systems assembly, network setup, and troubleshooting.
+                </div>
+            </div>
+            <div class="item" style="margin-top: 4px;">
+                <div class="item-header">
+                    <div>
                         <span class="item-role">BSIT</span>
                         <span class="separator">|</span>
                         <span class="item-company-school">Batangas State University</span>
@@ -401,7 +414,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Key Strengths:</div>
-                    <div class="skill-list">Systems Analysis & Design, Technical Writing, Agile / Scrum</div>
+                    <div class="skill-list">Systems Analysis & Design, Technical Writing, Agile & Scrum, Communication & Collaboration, Rapid Adaptability, Troubleshooting & Logic</div>
                 </div>
             </div>
         </div>

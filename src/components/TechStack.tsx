@@ -17,17 +17,17 @@ const techStack: TechStackCategory[] = [
   },
   {
     title: 'Backend & Cloud',
-    items: ['Node.js', 'Express.js', 'Flask', 'REST APIs', /* 'Docker', 'AWS', 'CI/CD', */],
+    items: ['Node.js', 'Express.js', 'Flask', 'REST APIs', 'CI/CD (GitHub Actions)'],
     icon: Cloud,
   },
   {
     title: 'AI & Automation',
-    items: ['Prompt Engineering', 'n8n', 'OpenAI API', 'LLM Integration'],
+    items: ['Prompt Engineering', 'OpenAI API', 'LLM Integration'],
     icon: Cpu,
   },
   {
     title: 'Database',
-    items: ['PostgreSQL', 'MongoDB', 'Redis', 'SQL Optimization'],
+    items: ['PostgreSQL', 'MongoDB', 'Supabase', 'SQL Optimization'],
     icon: Database,
   },
   {
@@ -37,7 +37,7 @@ const techStack: TechStackCategory[] = [
   },
   {
     title: 'IT Support & Networking',
-    items: ['IT Support', 'Troubleshooting', 'Networking Basics', 'Hardware & Software Support'],
+    items: ['IT Support', 'PC Building', 'Troubleshooting', 'Active Directory', 'Windows Server', 'Networking Basics', 'Hardware & Software Support'],
     icon: Network,
   },
 ];
