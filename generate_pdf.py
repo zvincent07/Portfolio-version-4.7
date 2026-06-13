@@ -45,7 +45,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         .title {{
             font-size: 1.0em;
             font-weight: 600;
-            color: #ff4654;
+            color: #111823;
             letter-spacing: 0.08em;
             margin: 0 0 6px 0;
             text-transform: uppercase;
@@ -64,7 +64,8 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
             text-decoration: none;
         }}
         .contact-info a:hover {{
-            color: #ff4654;
+            color: #111823;
+            text-decoration: underline;
         }}
         .separator {{
             color: #cbd5e1;
@@ -83,7 +84,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
             letter-spacing: 0.05em;
             margin: 0 0 6px 0;
             padding-bottom: 2px;
-            border-bottom: 1.5px solid #ff4654;
+            border-bottom: 1.5px solid #111823;
         }}
         .section-content {{
             margin: 0;
@@ -128,7 +129,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         }}
         .item-role {{
             font-weight: 700;
-            color: #ff4654;
+            color: #111823;
         }}
         .item-company-school {{
             font-weight: 600;
@@ -181,13 +182,12 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         }}
         .project-link {{
             font-weight: 500;
-            color: #0f766e;
+            color: #111823;
             font-size: 0.85em;
-            text-decoration: none;
+            text-decoration: underline;
         }}
         .project-link:hover {{
-            text-decoration: underline;
-            color: #ff4654;
+            color: #475569;
         }}
         .project-description {{
             color: #334155;
