@@ -1,9 +1,10 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { animate } from 'animejs';
 import type { FeaturedProject } from '../data/projects';
 import ExternalLinkIcon from './ExternalLinkIcon';
 import TechTags from './TechTags';
 import ProjectDomainColumn from './ProjectDomainColumn';
+import ProjectCarouselModal from './ProjectCarouselModal';
 
 interface FeaturedProjectItemProps {
   project: FeaturedProject;
@@ -11,6 +12,7 @@ interface FeaturedProjectItemProps {
 
 export default function FeaturedProjectItem({ project }: FeaturedProjectItemProps) {
   const articleRef = useRef<HTMLElement>(null);
+  const [isCarouselOpen, setIsCarouselOpen] = useState(false);
 
   useEffect(() => {
     const el = articleRef.current;
@@ -65,13 +67,27 @@ export default function FeaturedProjectItem({ project }: FeaturedProjectItemProp
     });
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('a')) return;
+    
+    if (project.title.toLowerCase() === 'dayframe') {
+      setIsCarouselOpen(true);
+    } else if (project.title.toLowerCase() === 'inventrack') {
+      window.open('/Updated CAPSTONE - Inventrack Manuscript.docx.pdf', '_blank');
+    }
+  };
+
+  const isClickable = project.title.toLowerCase() === 'dayframe' || project.title.toLowerCase() === 'inventrack';
+
   return (
-    <article
-      ref={articleRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="grid grid-cols-1 md:grid-cols-[2fr_10fr] gap-x-8 gap-y-4 pt-6 pb-6 border-b border-white/5 transition-colors duration-300 px-4 -mx-4"
-    >
+    <>
+      <article
+        ref={articleRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
+        className={`grid grid-cols-1 md:grid-cols-[2fr_10fr] gap-x-8 gap-y-4 pt-6 pb-6 border-b border-white/5 transition-colors duration-300 px-4 -mx-4 ${isClickable ? 'cursor-pointer' : ''}`}
+      >
       <ProjectDomainColumn label={project.domain.label} icon={project.domain.icon} />
 
       <div className="min-w-0">
@@ -101,7 +117,15 @@ export default function FeaturedProjectItem({ project }: FeaturedProjectItemProp
             <p className="text-zinc-500 leading-relaxed m-0 mt-1">{project.fix}</p>
           </div>
         </div>
-      </div>
-    </article>
+        </div>
+      </article>
+
+      {project.title.toLowerCase() === 'dayframe' && (
+        <ProjectCarouselModal 
+          isOpen={isCarouselOpen}
+          onClose={() => setIsCarouselOpen(false)}
+        />
+      )}
+    </>
   );
 }

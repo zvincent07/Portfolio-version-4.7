@@ -1,7 +1,9 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useState } from 'react';
+import COEImage from '../assets/COE.jpg';
 import { animate, stagger } from 'animejs';
 import SectionHeader from './SectionHeader';
 import { SECTION_SHELL } from '../constants/layout';
+import ImageModal from './ImageModal';
 
 interface BulletPoint {
   title: string;
@@ -13,6 +15,7 @@ interface Experience {
   role: string;
   company: string;
   details: BulletPoint[];
+  certificateImage?: string;
 }
 
 const experiences: Experience[] = [
@@ -20,6 +23,7 @@ const experiences: Experience[] = [
     period: '2026',
     role: 'Technical Intern',
     company: 'COMELEC (Government/Public Sector)',
+    certificateImage: COEImage,
     details: [
       {
         title: 'System Operations',
@@ -82,6 +86,7 @@ interface ExperienceItemProps {
 
 function ExperienceItem({ job }: ExperienceItemProps) {
   const itemRef = useRef<HTMLLIElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleMouseEnter = () => {
     if (!itemRef.current) return;
@@ -117,7 +122,20 @@ function ExperienceItem({ job }: ExperienceItemProps) {
       }}
     >
       <p className="text-xs font-medium text-primary m-0 mb-1">{job.period}</p>
-      <h3 className="text-lg font-semibold text-white m-0">{job.role}</h3>
+      <div className="flex items-center gap-3 mb-1">
+        <h3 className="text-lg font-semibold text-white m-0">{job.role}</h3>
+        {job.certificateImage && (
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="text-white/40 hover:text-primary transition-colors focus:outline-none"
+            title="View Certificate"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+          </button>
+        )}
+      </div>
       <p className="text-sm text-white/60 m-0 mb-3">{job.company}</p>
       <ul className="list-none p-0 m-0 flex flex-col gap-3 sm:gap-2.5">
         {job.details.map((detail, idx) => (
@@ -129,6 +147,15 @@ function ExperienceItem({ job }: ExperienceItemProps) {
           </li>
         ))}
       </ul>
+
+      {job.certificateImage && (
+        <ImageModal 
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          imageSrc={job.certificateImage}
+          altText={`${job.role} Certificate`}
+        />
+      )}
     </li>
   );
 }

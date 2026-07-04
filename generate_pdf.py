@@ -337,7 +337,9 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                     </div>
                 </div>
                 <ul class="project-description">
-                    <li>Centralized asset lifecycle management system with role-based access control and structured state logs for auditor use, eliminating manual spreadsheet mismatches and auditing bottlenecks.</li>
+                    <li>Centralized asset lifecycle management system designed to eliminate manual tracking and auditing bottlenecks.</li>
+                    <li><strong>Challenge:</strong> Asset records lived in spreadsheets with no audit trail, causing mismatches during inventory cycles and slow approvals.</li>
+                    <li><strong>Fix:</strong> Built a centralized GSO inventory platform with RBAC, structured lifecycle states, and a single source of truth for auditors and staff.</li>
                 </ul>
             </div>
             <div class="project-item">
@@ -454,7 +456,11 @@ params = [
     ("10px", "0.45in", "9.8pt"),
     ("8px", "0.45in", "9.5pt"),
     ("7px", "0.4in", "9.2pt"),
-    ("6px", "0.4in", "9pt"),
+    ("6px", "0.38in", "9.2pt"),
+    ("5px", "0.35in", "9.2pt"),
+    ("4px", "0.35in", "9.1pt"),
+    ("4px", "0.35in", "9pt"),
+    ("4px", "0.35in", "8.8pt"),
     ("5px", "0.35in", "8.5pt"),
 ]
 

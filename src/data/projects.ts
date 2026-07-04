@@ -53,7 +53,7 @@ export const projects: Project[] = [
     challenge:
       'Asset records lived in spreadsheets with no audit trail, causing mismatches during inventory cycles and slow approvals.',
     fix: 'Built a centralized GSO inventory platform with RBAC, structured lifecycle states, and a single source of truth for auditors and staff.',
-    href: 'https://inventrackgso.onrender.com',
+    href: '/Updated CAPSTONE - Inventrack Manuscript.docx.pdf',
   },
   {
     type: 'featured',

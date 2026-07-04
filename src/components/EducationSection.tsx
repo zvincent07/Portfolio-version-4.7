@@ -1,7 +1,10 @@
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useState } from 'react';
+import COTImage from '../assets/COT.jpg';
+import SHSImage from '../assets/SHS.jpg';
 import { animate, stagger } from 'animejs';
 import SectionHeader from './SectionHeader';
 import { SECTION_SHELL } from '../constants/layout';
+import ImageModal from './ImageModal';
 
 interface EducationEntry {
   period: string;
@@ -10,6 +13,7 @@ interface EducationEntry {
   school: string;
   details: string;
   courses?: string[];
+  certificateImage?: string;
 }
 
 const education: EducationEntry[] = [
@@ -17,7 +21,8 @@ const education: EducationEntry[] = [
     period: '2026',
     degree: 'Computer Systems Servicing NC II',
     school: 'LCTI Lipa City Training Institute',
-    details: 'National Certificate II certification program covering computer systems assembly, hardware/software configuration, networking setups, and systematic diagnostics & troubleshooting.'
+    details: 'National Certificate II certification program covering computer systems assembly, hardware/software configuration, networking setups, and systematic diagnostics & troubleshooting.',
+    certificateImage: COTImage
   },
   {
     period: '2022 — 2026',
@@ -38,7 +43,8 @@ const education: EducationEntry[] = [
     degree: 'Senior High School Diploma',
     major: 'Science, Technology, Engineering & Mathematics (STEM)',
     school: 'The Mabini Academy',
-    details: 'Built a strong foundation in logic, calculus, and scientific research methods, preparing for intensive technical coursework in university.'
+    details: 'Built a strong foundation in logic, calculus, and scientific research methods, preparing for intensive technical coursework in university.',
+    certificateImage: SHSImage
   }
 ];
 
@@ -49,6 +55,7 @@ interface EducationItemProps {
 function EducationItem({ entry }: EducationItemProps) {
   const itemRef = useRef<HTMLLIElement>(null);
   const markerRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleMouseEnter = () => {
     if (itemRef.current) {
@@ -111,7 +118,20 @@ function EducationItem({ entry }: EducationItemProps) {
       />
       
       <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider m-0 mb-1">{entry.period}</p>
-      <h3 className="text-lg font-bold text-white m-0 leading-snug">{entry.degree}</h3>
+      <div className="flex items-center gap-3 mb-1">
+        <h3 className="text-lg font-bold text-white m-0 leading-snug">{entry.degree}</h3>
+        {entry.certificateImage && (
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="text-white/40 hover:text-primary transition-colors focus:outline-none"
+            title="View Certificate"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+          </button>
+        )}
+      </div>
       {entry.major && <p className="text-sm font-medium text-white/50 m-0 mb-1">{entry.major}</p>}
       <p className="text-sm font-medium text-red-400 m-0 mb-2">{entry.school}</p>
       <p className="text-sm text-zinc-400 leading-relaxed w-full m-0">{entry.details}</p>
@@ -128,8 +148,18 @@ function EducationItem({ entry }: EducationItemProps) {
           ))}
         </div>
       )}
+
+      {entry.certificateImage && (
+        <ImageModal 
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          imageSrc={entry.certificateImage}
+          altText={`${entry.degree} Certificate`}
+        />
+      )}
     </li>
   );
+
 }
 
 export default function EducationSection() {
