@@ -10,7 +10,7 @@ import ContactSection from './components/ContactSection';
 import { BadgeCheck } from 'lucide-react';
 import { SCROLL_MT } from './constants/layout';
 import bannerGif from './assets/Jinx Fishbones GIF by League of Legends.gif';
-import profilePic from './assets/Joan of Arc.png';
+import profilePic from './assets/1x1 size picture.png';
 import { ToastProvider } from './components/Toast';
 
 function App() {
