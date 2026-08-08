@@ -3,6 +3,7 @@ import { animate, splitText, stagger, createTimeline } from 'animejs';
 import Layout from './layouts/Layout';
 import ProjectsSection from './components/ProjectsSection';
 import TechStack from './components/TechStack';
+import ServicesHighlight from './components/ServicesHighlight';
 import SectionHeader from './components/SectionHeader';
 import ExperienceSection from './components/ExperienceSection';
 import EducationSection from './components/EducationSection';
@@ -358,6 +359,8 @@ function App() {
             <p className="block sm:hidden text-[1rem] leading-relaxed text-white/80">
               Developer, Business Analyst, and IT Support professional focused on scalable applications, AI-powered workflows, and user-focused digital solutions.
             </p>
+
+            <ServicesHighlight />
 
             <TechStack />
           </div>
