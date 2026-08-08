@@ -353,8 +353,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Topbar />
         
         {/* Mobile Header */}
-        <header className="md:hidden sticky top-0 w-full h-14 bg-[#111823]/95 backdrop-blur-md border-b border-white/5 z-40 px-5 flex items-center justify-between">
-          <span className="text-white font-bold tracking-widest text-sm uppercase">JVGL</span>
+        <header className="md:hidden sticky top-0 w-full h-14 bg-[#111823]/95 backdrop-blur-md border-b border-white/5 z-40 px-5 flex items-center justify-end">
           <div className="flex items-center gap-4">
             <a href="https://github.com/zvincent07" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px]">
