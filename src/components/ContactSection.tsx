@@ -277,10 +277,11 @@ export const ContactSection = forwardRef<HTMLElement>((_, ref) => {
         <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="text-xs text-zinc-500 font-mono ml-1">
+              <label htmlFor="user_name" className="text-xs text-zinc-500 font-mono ml-1">
                 var name =
               </label>
               <input
+                id="user_name"
                 type="text"
                 name="user_name"
                 required
@@ -289,10 +290,11 @@ export const ContactSection = forwardRef<HTMLElement>((_, ref) => {
               />
             </div>
             <div className="space-y-1">
-              <label className="text-xs text-zinc-500 font-mono ml-1">
+              <label htmlFor="user_email" className="text-xs text-zinc-500 font-mono ml-1">
                 var email =
               </label>
               <input
+                id="user_email"
                 type="email"
                 name="user_email"
                 required
@@ -303,10 +305,11 @@ export const ContactSection = forwardRef<HTMLElement>((_, ref) => {
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs text-zinc-500 font-mono ml-1">
+            <label htmlFor="message" className="text-xs text-zinc-500 font-mono ml-1">
               var message =
             </label>
             <textarea
+              id="message"
               name="message"
               required
               rows={4}
