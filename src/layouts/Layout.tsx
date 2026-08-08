@@ -3,7 +3,7 @@ import { animate } from 'animejs';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 import Footer from './Footer';
-import { User, Briefcase, GraduationCap, Mail, Building2, Snowflake } from 'lucide-react';
+import { User, Briefcase, GraduationCap, Mail, Building2, Snowflake, IdCard } from 'lucide-react';
 import { useToast } from '../components/Toast';
 import Snowflakes from '../components/Snowflakes';
 
@@ -24,13 +24,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { id: 'experience', label: 'Experience', icon: Building2 },
     { id: 'education', label: 'Education', icon: GraduationCap },
     { id: 'contact', label: 'Contact', icon: Mail },
+    { id: 'business-card', label: 'Business Card', icon: IdCard },
   ];
 
   // Sync pathname change (direct URL navigation, back/forward, or sidebar clicks)
   useEffect(() => {
     const handlePathChange = () => {
       const path = window.location.pathname.replace(/^\//, '');
-      const sectionIds = ['profile', 'projects', 'experience', 'education', 'contact'];
+      const sectionIds = ['profile', 'projects', 'experience', 'education', 'contact', 'business-card'];
       if (path === '' || path === 'profile') {
         setActiveNav('profile');
       } else if (sectionIds.includes(path)) {
@@ -41,6 +42,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     window.addEventListener('popstate', handlePathChange);
     return () => window.removeEventListener('popstate', handlePathChange);
   }, []);
+
+  // Show drag-to-scroll tip once for desktop users
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      const hasSeenDragTip = localStorage.getItem('hasSeenDragTip');
+      if (!hasSeenDragTip) {
+        const timer = setTimeout(() => {
+          showToast({
+            message: '💡 Tip: You can click and drag anywhere to scroll!',
+            duration: 6000,
+          });
+          localStorage.setItem('hasSeenDragTip', 'true');
+        }, 3500);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [showToast]);
 
   // Smooth fade-out and fade-in transition when activeNav changes
   useEffect(() => {
@@ -73,8 +91,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       // 1. Fade out the old section
       animate(fromEl, {
         opacity: 0,
-        translateY: -15,
-        scale: 0.98,
+        translateY: -20,
         duration: 300,
         easing: 'easeInQuad',
         complete: () => {
@@ -83,16 +100,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           // 2. Prepare the new section
           toEl.style.display = 'block';
           toEl.style.opacity = '0';
-          toEl.style.transform = 'translateY(15px) scale(0.98)';
+          toEl.style.transform = 'translateY(20px)';
           window.scrollTo(0, 0);
 
           // 3. Fade in the new section
           animate(toEl, {
             opacity: [0, 1],
-            translateY: [15, 0],
-            scale: [0.98, 1],
-            duration: 400,
-            easing: 'easeOutQuad',
+            translateY: [20, 0],
+            duration: 600,
+            easing: 'easeOutQuart',
             complete: () => {
               prevActiveNavRef.current = toId;
               isTransitioningRef.current = false;
@@ -120,12 +136,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   // Handle scroll wheel and touch swipe to switch sections at boundaries
   useEffect(() => {
-    const sectionIds = ['profile', 'projects', 'experience', 'education', 'contact'];
+    const sectionIds = ['profile', 'projects', 'experience', 'education', 'contact', 'business-card'];
+    const accumulatedDeltaRef = { current: 0 };
     let lastTime = 0;
 
     const handleWheel = (e: WheelEvent) => {
       const now = Date.now();
-      if (now - lastTime < 1000) return; // transition throttle
+      if (now - lastTime < 1000) {
+        accumulatedDeltaRef.current = 0;
+        return; // transition throttle
+      }
       if (isTransitioningRef.current) return;
 
       const activeEl = document.getElementById(activeNav);
@@ -135,27 +155,43 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5;
       const isAtTop = window.scrollY <= 5;
 
+      if (!isAtBottom && !isAtTop) {
+        accumulatedDeltaRef.current = 0;
+      }
+
       const currentIndex = sectionIds.indexOf(activeNav);
 
       if (e.deltaY > 0) {
         // Scroll down
         if (isAtBottom && currentIndex < sectionIds.length - 1) {
-          const nextSection = sectionIds[currentIndex + 1];
-          setActiveNav(nextSection);
-          const path = nextSection === 'profile' ? '/' : `/${nextSection}`;
-          window.history.pushState(null, '', path);
-          window.dispatchEvent(new PopStateEvent('popstate'));
-          lastTime = now;
+          accumulatedDeltaRef.current += e.deltaY;
+          if (accumulatedDeltaRef.current > 150) {
+            const nextSection = sectionIds[currentIndex + 1];
+            setActiveNav(nextSection);
+            const path = nextSection === 'profile' ? '/' : `/${nextSection}`;
+            window.history.pushState(null, '', path);
+            window.dispatchEvent(new PopStateEvent('popstate'));
+            lastTime = now;
+            accumulatedDeltaRef.current = 0;
+          }
+        } else {
+          accumulatedDeltaRef.current = 0;
         }
       } else if (e.deltaY < 0) {
         // Scroll up
         if (isAtTop && currentIndex > 0) {
-          const prevSection = sectionIds[currentIndex - 1];
-          setActiveNav(prevSection);
-          const path = prevSection === 'profile' ? '/' : `/${prevSection}`;
-          window.history.pushState(null, '', path);
-          window.dispatchEvent(new PopStateEvent('popstate'));
-          lastTime = now;
+          accumulatedDeltaRef.current -= e.deltaY;
+          if (accumulatedDeltaRef.current > 150) {
+            const prevSection = sectionIds[currentIndex - 1];
+            setActiveNav(prevSection);
+            const path = prevSection === 'profile' ? '/' : `/${prevSection}`;
+            window.history.pushState(null, '', path);
+            window.dispatchEvent(new PopStateEvent('popstate'));
+            lastTime = now;
+            accumulatedDeltaRef.current = 0;
+          }
+        } else {
+          accumulatedDeltaRef.current = 0;
         }
       }
     };
@@ -214,6 +250,96 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     };
   }, [activeNav]);
 
+  // Desktop Drag-to-Scroll
+  useEffect(() => {
+    let isDown = false;
+    let startY = 0;
+    let scrollTop = 0;
+
+    const mouseDownHandler = (e: MouseEvent) => {
+      // Ignore interactive elements
+      if ((e.target as HTMLElement).closest('a, button, input, textarea, .cursor-pointer')) return;
+      // Only enable on desktop screens
+      if (window.innerWidth < 768) return;
+
+      // Clear any annoying text selection immediately when clicking to drag
+      window.getSelection()?.removeAllRanges();
+
+      isDown = true;
+      startY = e.clientY;
+      scrollTop = window.scrollY;
+      document.body.style.cursor = 'grabbing';
+      document.body.style.userSelect = 'none';
+    };
+
+    const mouseLeaveHandler = () => {
+      if (!isDown) return;
+      isDown = false;
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+
+    const mouseUpHandler = () => {
+      if (!isDown) return;
+      isDown = false;
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    };
+
+    const mouseMoveHandler = (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      window.getSelection()?.removeAllRanges(); // Keep selection clear during drag
+
+      const y = e.clientY;
+      const walk = (y - startY) * 1.5; // Scroll speed multiplier
+      const intendedScrollY = scrollTop - walk;
+      
+      window.scrollTo(0, intendedScrollY);
+
+      // Handle page switching by calculating overscroll (dragging past the boundaries)
+      const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const overscrollDown = intendedScrollY - maxScroll;
+      const overscrollUp = 0 - intendedScrollY;
+      
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5;
+      const isAtTop = window.scrollY <= 5;
+
+      const sectionIds = ['profile', 'projects', 'experience', 'education', 'contact', 'business-card'];
+      const currentIndex = sectionIds.indexOf(activeNav);
+
+      if (isAtBottom && overscrollDown > 150 && currentIndex < sectionIds.length - 1) {
+        const nextSection = sectionIds[currentIndex + 1];
+        window.history.pushState(null, '', nextSection === 'profile' ? '/' : `/${nextSection}`);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        
+        isDown = false;
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+      } else if (isAtTop && overscrollUp > 150 && currentIndex > 0) {
+        const prevSection = sectionIds[currentIndex - 1];
+        window.history.pushState(null, '', prevSection === 'profile' ? '/' : `/${prevSection}`);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        
+        isDown = false;
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+      }
+    };
+
+    document.addEventListener('mousedown', mouseDownHandler);
+    document.addEventListener('mouseleave', mouseLeaveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+    document.addEventListener('mousemove', mouseMoveHandler, { passive: false });
+
+    return () => {
+      document.removeEventListener('mousedown', mouseDownHandler);
+      document.removeEventListener('mouseleave', mouseLeaveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+      document.removeEventListener('mousemove', mouseMoveHandler);
+    };
+  }, [activeNav]);
+
   return (
     <div className="relative flex min-h-screen w-full md:w-[95%] md:max-w-[1400px] mx-auto bg-[#111823]/70 md:border-x border-white/5 md:shadow-[0_0_30px_rgba(0,0,0,0.3)]">
       {showSnow && <Snowflakes />}
@@ -225,14 +351,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       />
       <div className="flex flex-col flex-1 min-w-0">
         <Topbar />
-        <main className="flex-1 px-4 sm:px-8 pt-6 sm:pt-8 pb-24 md:pb-12 flex flex-col gap-8 md:gap-12 w-full">
+        <main className="flex-1 px-4 sm:px-8 pt-6 sm:pt-8 pb-32 md:pb-16 flex flex-col gap-8 md:gap-12 w-full">
           {children}
         </main>
         <Footer />
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#111823]/95 backdrop-blur-md border-t border-white/5 px-4 flex items-center justify-around z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#111823]/95 backdrop-blur-md border-t border-white/5 px-4 flex items-center justify-start gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeNav === item.id;

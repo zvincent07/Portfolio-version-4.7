@@ -11,23 +11,23 @@ interface TechStackCategory {
 
 const techStack: TechStackCategory[] = [
   {
-    title: 'Web Development',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'ShadCN'],
+    title: 'Web & Desktop Dev',
+    items: ['React', 'Next.js', 'Tauri', 'TypeScript', 'Tailwind CSS', 'Zustand', 'ShadCN'],
     icon: Layout,
   },
   {
-    title: 'Backend & Cloud',
-    items: ['Node.js', 'Express.js', 'Flask', 'REST APIs', 'CI/CD (GitHub Actions)'],
+    title: 'Backend & Systems',
+    items: ['Node.js', 'Rust', 'Express.js', 'REST APIs', 'Vercel', 'CI/CD (GitHub Actions)'],
     icon: Cloud,
   },
   {
-    title: 'AI & Automation',
-    items: ['Prompt Engineering', 'OpenAI API', 'LLM Integration'],
+    title: 'AI-Powered Development',
+    items: ['Language-Agnostic AI Development', 'Prompt Engineering', 'OpenAI API', 'LLM Integration'],
     icon: Cpu,
   },
   {
     title: 'Database',
-    items: ['PostgreSQL', 'MongoDB', 'Supabase', 'SQL Optimization'],
+    items: ['PostgreSQL', 'MongoDB', 'SQLite', 'Supabase', 'SQL Optimization'],
     icon: Database,
   },
   {

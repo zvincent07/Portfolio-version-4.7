@@ -38,8 +38,8 @@ const Linkedin = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 const SERVICE_ID = "service_b5d1aem";
-const TEMPLATE_ID = "template_yetzp89";
-const PUBLIC_KEY = "F861GsSBkGVMj6g7o";
+const TEMPLATE_ID = "template_r1uqzdh";
+const PUBLIC_KEY = "2BS0bPgICrICpNXaI";
 
 export const ContactSection = forwardRef<HTMLElement>((_, ref) => {
   const formRef = useRef<HTMLFormElement>(null);

@@ -7,9 +7,11 @@ import SectionHeader from './components/SectionHeader';
 import ExperienceSection from './components/ExperienceSection';
 import EducationSection from './components/EducationSection';
 import ContactSection from './components/ContactSection';
+import BusinessCardSection from './components/BusinessCardSection';
 import { BadgeCheck } from 'lucide-react';
 import { SCROLL_MT } from './constants/layout';
 import bannerGif from './assets/Jinx Fishbones GIF by League of Legends.gif';
+import loadingPic from './assets/Joan of Arc.png';
 import profilePic from './assets/1x1 size picture.png';
 import { ToastProvider } from './components/Toast';
 
@@ -31,15 +33,7 @@ function App() {
   useEffect(() => {
     if (hasLoadedRef.current) return;
 
-    // Start staggered letters animation for "Loading ..."
-    const textAnim = animate('.loading-char', {
-      translateY: [0, -8, 0],
-      opacity: [0.5, 1, 0.5],
-      duration: 900,
-      delay: stagger(75),
-      loop: true,
-      easing: 'easeInOutSine'
-    });
+    const textAnim = null;
 
     const timer = setTimeout(() => {
       if (!loadingAvatarRef.current || !avatarContainerRef.current || !loadingOverlayRef.current) {
@@ -279,8 +273,7 @@ function App() {
               animate(target, {
                 opacity: [0, 1],
                 translateY: [20, 0],
-                duration: 800,
-                delay: 100,
+                duration: 600,
                 easing: 'easeOutQuart',
               });
             } else {
@@ -313,22 +306,25 @@ function App() {
 
           {/* Content overlay containing the avatar and letter-by-letter loading text */}
           <div className="relative flex flex-col items-center z-10 pointer-events-none">
-            <div
-              ref={loadingAvatarRef}
-              className="w-[160px] h-[160px] rounded-full bg-slate-800 flex items-center justify-center text-white relative shadow-[0_8px_30px_rgba(0,0,0,0.5)] border-2 border-primary/60 overflow-hidden"
-            >
-              <img src={profilePic} alt="Loading..." className="w-full h-full object-cover" />
-            </div>
+            <div className="relative flex items-center justify-center">
+              {/* The Avatar */}
+              <div
+                ref={loadingAvatarRef}
+                className="w-[86px] h-[86px] rounded-full bg-slate-800 flex items-center justify-center text-white relative z-20 overflow-hidden"
+              >
+                <img src={loadingPic} alt="Loading..." className="w-full h-full object-cover" />
+              </div>
 
-            <div
-              ref={loadingTextRef}
-              className="text-white font-mono text-sm tracking-widest mt-6 flex gap-1 justify-center"
-            >
-              {"Loading ...".split("").map((char, idx) => (
-                <span key={idx} className="loading-char inline-block">
-                  {char === " " ? "\u00A0" : char}
+              {/* Ring and Text that fade out */}
+              <div ref={loadingTextRef} className="absolute flex flex-col items-center justify-center z-10 w-[200px] h-[200px]">
+                {/* Sleek Spinner Ring */}
+                <div className="w-[106px] h-[106px] rounded-full border-[2px] border-white/5 border-t-primary border-l-primary animate-spin" />
+                
+                {/* Text below */}
+                <span className="absolute bottom-[20px] text-white/40 font-mono text-[10px] tracking-[0.3em] uppercase pl-1">
+                  Loading
                 </span>
-              ))}
+              </div>
             </div>
           </div>
         </div>
@@ -345,19 +341,19 @@ function App() {
 
           <div className="flex flex-col sm:flex-row items-center px-4 sm:px-8 py-0 relative -mt-[60px] z-10 mb-10 md:mb-12">
             <div ref={avatarContainerRef} className="relative w-[120px] h-[120px] flex items-center justify-center shrink-0 sm:mr-8 mb-4 sm:mb-0">
-              <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-white relative z-10 shadow-[0_8px_30px_rgba(0,0,0,0.5)] border-2 border-primary/60 overflow-hidden">
+              <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-white relative z-10 shadow-[0_0_15px_rgba(255,70,84,0.2)] border-[3px] border-primary/60 overflow-hidden">
                 <img src={profilePic} alt="Profile Picture" className="w-full h-full object-cover" />
               </div>
             </div>
 
             <div className="flex flex-col items-center sm:items-start relative">
-              <p ref={textRef} className="text-[1.8rem] m-0 text-white font-bold tracking-[0.06em] leading-[1.35] text-center sm:text-left">
-                <span className="relative inline-block pr-7">
-                  John Vincent
+              <p ref={textRef} className="text-[1.35rem] sm:text-[1.8rem] m-0 text-white font-bold tracking-[0.06em] leading-[1.35] text-center sm:text-left">
+                <span className="relative inline-block pr-7 sm:pr-8 whitespace-nowrap">
+                  John Vincent G. Laylo
                   <BadgeCheck ref={badgeRef} className="text-primary fill-white opacity-0 absolute right-0 top-1/2 -translate-y-1/2" size={20} />
                 </span>
                 <br />
-                <span className="text-[1.1rem] text-white/60 font-medium">Dev, Analyst & IT Support</span>
+                <span className="text-[1rem] sm:text-[1.1rem] text-white/60 font-medium mt-1 sm:mt-0 inline-block">Dev, Analyst & IT Support</span>
               </p>
             </div>
           </div>
@@ -381,6 +377,7 @@ function App() {
         <EducationSection />
 
         <ContactSection ref={contactSectionRef} />
+        <BusinessCardSection />
       </Layout>
     </ToastProvider>
   );

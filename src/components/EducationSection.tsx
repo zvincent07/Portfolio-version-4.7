@@ -1,6 +1,7 @@
 import { useRef, useLayoutEffect, useState } from 'react';
 import COTImage from '../assets/COT.jpg';
 import SHSImage from '../assets/SHS.jpg';
+import BSITImage from '../assets/Diploma.jpg';
 import { animate, stagger } from 'animejs';
 import SectionHeader from './SectionHeader';
 import { SECTION_SHELL } from '../constants/layout';
@@ -36,7 +37,8 @@ const education: EducationEntry[] = [
       'Fundamentals of Enterprise Data Management',
       'Analytics Techniques & Tools',
       'Analytics Application'
-    ]
+    ],
+    certificateImage: BSITImage
   },
   {
     period: '2020 — 2022',

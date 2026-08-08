@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Database, DoorOpen, MonitorSmartphone, ShieldCheck, Smartphone } from 'lucide-react';
+import { Database, DoorOpen, MonitorSmartphone, ShieldCheck, Smartphone, Globe } from 'lucide-react';
 import type { DomainIconId } from '../data/projects';
 
 const iconMap: Record<DomainIconId, LucideIcon> = {
@@ -8,6 +8,7 @@ const iconMap: Record<DomainIconId, LucideIcon> = {
   'door-open': DoorOpen,
   smartphone: Smartphone,
   shield: ShieldCheck,
+  globe: Globe,
 };
 
 interface ProjectDomainColumnProps {

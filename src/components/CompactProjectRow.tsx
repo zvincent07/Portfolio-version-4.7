@@ -18,7 +18,7 @@ export default function CompactProjectRow({ project }: CompactProjectRowProps) {
 
     // Initial state
     el.style.opacity = '0';
-    el.style.transform = 'translateY(15px)';
+    el.style.transform = 'translateY(20px)';
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,14 +26,13 @@ export default function CompactProjectRow({ project }: CompactProjectRowProps) {
           if (entry.isIntersecting) {
             animate(el, {
               opacity: [0, 1],
-              translateY: [15, 0],
+              translateY: [20, 0],
               duration: 600,
-              delay: 50,
               easing: 'easeOutQuart',
             });
           } else {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(15px)';
+            el.style.transform = 'translateY(20px)';
           }
         });
       },

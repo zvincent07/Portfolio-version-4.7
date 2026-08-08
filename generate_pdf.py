@@ -245,12 +245,12 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         <div class="section-content">
             <div class="skills-container">
                 <div class="skill-group">
-                    <div class="skill-label">Web Development:</div>
-                    <div class="skill-list">React, Next.js, TypeScript, Tailwind CSS, Zustand, ShadCN</div>
+                    <div class="skill-label">Web & Desktop Dev:</div>
+                    <div class="skill-list">React, Next.js, Tauri, TypeScript, Tailwind CSS, Zustand, ShadCN</div>
                 </div>
                 <div class="skill-group">
-                    <div class="skill-label">Backend & Cloud:</div>
-                    <div class="skill-list">Node.js, Express.js, Flask, REST APIs, CI/CD</div>
+                    <div class="skill-label">Backend & Systems:</div>
+                    <div class="skill-list">Node.js, Rust, Express.js, REST APIs, Vercel, CI/CD</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">AI & Automation:</div>
@@ -258,7 +258,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Database Systems:</div>
-                    <div class="skill-list">PostgreSQL, MongoDB, MySQL, Supabase, SQL Optimization</div>
+                    <div class="skill-list">PostgreSQL, MongoDB, SQLite, MySQL, Supabase, SQL Optimization</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Tools & Workflows:</div>
@@ -266,7 +266,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">IT Support & Networks:</div>
-                    <div class="skill-list">IT Support, PC Building, Troubleshooting, Active Directory, Windows Server, Cisco Packet Tracer, Hardware/Software</div>
+                    <div class="skill-list">IT Support, PC Building, Troubleshooting, Active Directory, Windows Server, Hardware/Software</div>
                 </div>
             </div>
         </div>
@@ -317,6 +317,20 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
             <div class="project-item">
                 <div class="project-header">
                     <div class="project-title-tech">
+                        <strong>Kasapi Connect</strong> <span class="project-tech">(Tauri, React, SQLite, Tailwind)</span>
+                    </div>
+                    <div>
+                        <a class="project-link" href="https://kasapi-connect.vercel.app/" target="_blank">kasapi-connect.vercel.app</a>
+                    </div>
+                </div>
+                <ul class="project-description">
+                    <li>Smart gym management software built to arm independent gyms with enterprise firepower, replacing expensive SaaS subscriptions.</li>
+                    <li>Developed an offline-first desktop application with a lifetime license, featuring automated QR attendance, Point of Sale, and secure data storage.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-title-tech">
                         <strong>Dayframe</strong> <span class="project-tech">(Next.js 15, Tauri, Rust, MongoDB, TypeScript)</span>
                     </div>
                     <div>
@@ -324,7 +338,8 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                     </div>
                 </div>
                 <ul class="project-description">
-                    <li>A desktop productivity journaling app bridging Next.js and Tauri/Rust with a local daemon shell for fast startup and offline-native feel, resolving slow launches and poor desktop integration.</li>
+                    <li>A desktop productivity journaling app bridging Next.js and Tauri/Rust with a local daemon shell for fast startup and offline-native feel.</li>
+                    <li>Designed a modular frontend architecture, integrating Rust APIs via Tauri to build a highly responsive and lightweight system utility.</li>
                 </ul>
             </div>
             <div class="project-item">
@@ -338,21 +353,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
                 </div>
                 <ul class="project-description">
                     <li>Centralized asset lifecycle management system designed to eliminate manual tracking and auditing bottlenecks.</li>
-                    <li><strong>Challenge:</strong> Asset records lived in spreadsheets with no audit trail, causing mismatches during inventory cycles and slow approvals.</li>
-                    <li><strong>Fix:</strong> Built a centralized GSO inventory platform with RBAC, structured lifecycle states, and a single source of truth for auditors and staff.</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <div class="project-header">
-                    <div class="project-title-tech">
-                        <strong>QRoom</strong> <span class="project-tech">(MySQL, Express, React, Node.js, Bootstrap, QR)</span>
-                    </div>
-                    <div>
-                        <a class="project-link" href="https://qroom-omega.vercel.app/" target="_blank">qroom-omega.vercel.app</a>
-                    </div>
-                </div>
-                <ul class="project-description">
-                    <li>Real-time classroom availability tracker with QR code check-ins for instant status updates and maintenance feedback, replacing slow manual whiteboard updates.</li>
+                    <li>Built a secure GSO inventory platform with RBAC, structured lifecycle states, and a single source of truth, solving spreadsheet mismatches and slow approvals.</li>
                 </ul>
             </div>
         </div>

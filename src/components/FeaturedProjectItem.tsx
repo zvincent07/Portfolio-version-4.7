@@ -29,8 +29,7 @@ export default function FeaturedProjectItem({ project }: FeaturedProjectItemProp
             animate(el, {
               opacity: [0, 1],
               translateY: [20, 0],
-              duration: 800,
-              delay: 100,
+              duration: 600,
               easing: 'easeOutQuart',
             });
           } else {
@@ -78,6 +77,7 @@ export default function FeaturedProjectItem({ project }: FeaturedProjectItemProp
   };
 
   const isClickable = project.title.toLowerCase() === 'dayframe' || project.title.toLowerCase() === 'inventrack';
+  const isKasapi = project.title === 'Kasapi Connect';
 
   return (
     <>
@@ -86,14 +86,14 @@ export default function FeaturedProjectItem({ project }: FeaturedProjectItemProp
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
-        className={`grid grid-cols-1 md:grid-cols-[2fr_10fr] gap-x-8 gap-y-4 pt-6 pb-6 border-b border-white/5 transition-colors duration-300 px-4 -mx-4 ${isClickable ? 'cursor-pointer' : ''}`}
+        className={`grid grid-cols-1 md:grid-cols-[2fr_10fr] gap-x-8 gap-y-4 pt-6 pb-6 transition-all duration-300 px-4 -mx-4 relative overflow-hidden ${isClickable ? 'cursor-pointer' : ''} ${isKasapi ? 'bg-primary/[0.03] border border-primary/20 rounded-none my-4 shadow-[0_0_30px_rgba(255,70,84,0.1)]' : 'border-b border-white/5'}`}
       >
       <ProjectDomainColumn label={project.domain.label} icon={project.domain.icon} />
 
-      <div className="min-w-0">
+      <div className="min-w-0 relative z-10">
         <div className="flex items-start justify-between gap-4 mb-2">
           <div className="flex flex-wrap items-center gap-2 min-w-0">
-            <h3 className="text-base font-semibold text-white m-0">{project.title}</h3>
+            <h3 className={`text-base font-semibold m-0 ${isKasapi ? 'text-primary' : 'text-white'}`}>{project.title}</h3>
             {project.badge && (
               <span className="px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-red-400 border border-red-500/40 rounded-none">
                 {project.badge}

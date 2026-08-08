@@ -20,6 +20,29 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
+    period: '2026 - Present',
+    role: 'Founder & Lead Developer',
+    company: 'Kasapi Connect',
+    details: [
+      {
+        title: 'System Architecture',
+        text: 'Architected and built an offline-first smart gym management desktop application using Tauri and React.',
+      },
+      {
+        title: 'Backend & Database',
+        text: 'Designed robust data models and integrated local SQLite storage for seamless, lightning-fast offline operation.',
+      },
+      {
+        title: 'Core Features',
+        text: 'Developed automated QR check-ins, an integrated Point of Sale (POS) system, and instant analytics dashboards.',
+      },
+      {
+        title: 'Product Strategy',
+        text: 'Directed the UI/UX design of a high-conversion landing page and orchestrated the product launch.',
+      },
+    ],
+  },
+  {
     period: '2026',
     role: 'Technical Intern',
     company: 'COMELEC (Government/Public Sector)',

@@ -1,4 +1,4 @@
-import { User, Briefcase, GraduationCap, Mail, Building2, FileText, FileBadge } from 'lucide-react';
+import { User, Briefcase, GraduationCap, Mail, Building2, FileText, FileBadge, IdCard } from 'lucide-react';
 import { useToast } from '../components/Toast';
 
 const LinkedInIcon = () => (
@@ -53,6 +53,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeNav, setAct
     { id: 'experience', label: 'Experience', icon: Building2 },
     { id: 'education', label: 'Education', icon: GraduationCap },
     { id: 'contact', label: 'Contact', icon: Mail },
+    { id: 'business-card', label: 'Business Card', icon: IdCard },
   ];
 
   const handleSidebarClick = (e: React.MouseEvent) => {
