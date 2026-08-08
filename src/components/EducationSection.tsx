@@ -208,7 +208,7 @@ export default function EducationSection() {
   return (
     <section id="education" className={SECTION_SHELL}>
       <SectionHeader title="Education" />
-      <div className="w-full py-4">
+      <div className="w-full pb-4">
         <ul ref={listRef} className="relative border-l border-zinc-800 list-none p-0 m-0 ml-3 space-y-12 w-full">
           {education.map((entry) => (
             <EducationItem key={`${entry.school}-${entry.period}`} entry={entry} />

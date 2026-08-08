@@ -204,7 +204,7 @@ export const ContactSection = forwardRef<HTMLElement>((_, ref) => {
     <section ref={ref} id="contact" className={SECTION_SHELL}>
       <SectionHeader title="Contact" />
       
-      <div className="grid md:grid-cols-2 gap-8 w-full mt-4">
+      <div className="grid md:grid-cols-2 gap-8 w-full">
         <div className="flex flex-col justify-between gap-6">
           <div className="space-y-6">
             <p className="text-zinc-400 leading-relaxed text-sm">

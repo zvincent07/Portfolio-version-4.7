@@ -13,7 +13,7 @@ export default function ProjectsSection() {
       <div className="w-full max-w-[1400px] mx-auto">
         <SectionHeader title="Featured Projects" />
 
-        <div className="mt-6 w-full">
+        <div className="w-full">
           {featuredProjects.map((project) => (
             <FeaturedProjectItem key={project.title} project={project} />
           ))}

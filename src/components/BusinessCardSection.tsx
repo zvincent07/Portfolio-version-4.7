@@ -66,7 +66,7 @@ export default function BusinessCardSection() {
   return (
     <section id="business-card" className={SECTION_SHELL}>
       <SectionHeader title="Business Card" />
-      <div className="w-full flex flex-col items-center justify-center pt-8 pb-12 gap-4">
+      <div className="w-full flex flex-col items-center justify-center pb-12 gap-4">
         
         {/* Cards Container */}
         <div className="w-full overflow-x-auto">
