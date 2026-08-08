@@ -13,6 +13,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   min-height: 100vh;
+  overscroll-behavior-y: none; /* Prevent pull-to-refresh on mobile */
   
   /* Grid texture */
   background-image: 
@@ -24,6 +25,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior-y: none; /* Prevent pull-to-refresh on mobile */
 }
 
 /* Hide scrollbar globally */
