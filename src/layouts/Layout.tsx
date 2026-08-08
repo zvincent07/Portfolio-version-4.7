@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { animate } from 'animejs';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   });
 
   const navItems = [
-    { id: 'profile', label: 'Profile', icon: User },
+    { id: 'profile', label: 'About', icon: User },
     { id: 'projects', label: 'Projects', icon: Briefcase },
     { id: 'experience', label: 'Experience', icon: Building2 },
     { id: 'education', label: 'Education', icon: GraduationCap },
@@ -363,8 +363,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           const Icon = item.icon;
           const isActive = activeNav === item.id;
           return (
-            <a
-              key={item.id}
+            <React.Fragment key={item.id}>
+              {item.id === 'business-card' && (
+                <div className="h-6 w-[1px] bg-white/10 mx-1 shrink-0" />
+              )}
+              <a
               href={item.id === 'profile' ? '/' : `/${item.id}`}
               onClick={(e) => {
                 e.preventDefault();
@@ -381,6 +384,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             >
               <Icon size={20} className="transition-transform duration-300" />
             </a>
+            </React.Fragment>
           );
         })}
         

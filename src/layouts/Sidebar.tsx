@@ -1,3 +1,4 @@
+import React from 'react';
 import { User, Briefcase, GraduationCap, Mail, Building2, FileText, FileBadge, IdCard } from 'lucide-react';
 import { useToast } from '../components/Toast';
 
@@ -48,7 +49,7 @@ interface SidebarProps {
 export default function Sidebar({ isCollapsed, setIsCollapsed, activeNav, setActiveNav }: SidebarProps) {
   const { showToast } = useToast();
   const navItems = [
-    { id: 'profile', label: 'Profile', icon: User },
+    { id: 'profile', label: 'About', icon: User },
     { id: 'projects', label: 'Projects', icon: Briefcase },
     { id: 'experience', label: 'Experience', icon: Building2 },
     { id: 'education', label: 'Education', icon: GraduationCap },
@@ -100,7 +101,11 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeNav, setAct
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
-              <li key={item.id} className="w-full">
+              <React.Fragment key={item.id}>
+                {item.id === 'business-card' && (
+                  <div className={`w-full h-[1px] bg-white/10 my-1 transition-all duration-300 ${isCollapsed ? 'opacity-50' : 'opacity-100'}`} />
+                )}
+                <li className="w-full">
                 <a
                   href={item.id === 'profile' ? '/' : `/${item.id}`}
                   className={`flex items-center text-white no-underline text-sm transition-all duration-300 rounded-md p-2.5 ${isCollapsed ? 'justify-center' : ''} ${activeNav === item.id ? 'bg-primary/10 text-primary opacity-100' : 'opacity-70 hover:bg-white/5 hover:opacity-100'}`}
@@ -112,6 +117,7 @@ export default function Sidebar({ isCollapsed, setIsCollapsed, activeNav, setAct
                   </span>
                 </a>
               </li>
+              </React.Fragment>
             );
           })}
         </ul>
