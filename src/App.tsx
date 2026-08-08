@@ -33,18 +33,11 @@ function App() {
   useEffect(() => {
     if (hasLoadedRef.current) return;
 
-    const textAnim = null;
-
     const timer = setTimeout(() => {
       if (!loadingAvatarRef.current || !avatarContainerRef.current || !loadingOverlayRef.current) {
         setIsLoading(false);
         hasLoadedRef.current = true;
         return;
-      }
-
-      // Stop the letters looping animation
-      if (textAnim) {
-        textAnim.pause();
       }
 
       // Measure positions to perform the FLIP fly-in animation
@@ -132,7 +125,6 @@ function App() {
 
     return () => {
       clearTimeout(timer);
-      if (textAnim) textAnim.pause();
     };
   }, []);
 
