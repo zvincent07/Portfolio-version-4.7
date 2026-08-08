@@ -333,7 +333,7 @@ function App() {
 
           <div className="flex flex-col sm:flex-row items-center px-4 sm:px-8 py-0 relative -mt-[60px] z-10 mb-10 md:mb-12">
             <div ref={avatarContainerRef} className="relative w-[120px] h-[120px] flex items-center justify-center shrink-0 sm:mr-8 mb-4 sm:mb-0">
-              <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-white relative z-10 shadow-[0_0_15px_rgba(255,70,84,0.2)] border-[3px] border-primary/60 overflow-hidden">
+              <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-white relative z-10 shadow-[0_0_15px_rgba(255,70,84,0.2)] border-[3px] border-primary overflow-hidden">
                 <img src={profilePic} alt="Profile Picture" className="w-full h-full object-cover" />
               </div>
             </div>
