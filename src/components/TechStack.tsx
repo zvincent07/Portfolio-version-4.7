@@ -11,34 +11,34 @@ interface TechStackCategory {
 
 const techStack: TechStackCategory[] = [
   {
-    title: 'Web & Desktop Dev',
-    items: ['React', 'Next.js', 'Tauri', 'TypeScript', 'Tailwind CSS', 'Zustand', 'ShadCN'],
+    title: 'Frontend',
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'ShadCN'],
     icon: Layout,
   },
   {
-    title: 'Backend & Systems',
-    items: ['Node.js', 'Rust', 'Express.js', 'REST APIs', 'Vercel', 'CI/CD (GitHub Actions)'],
+    title: 'Backend',
+    items: ['Node.js', 'Express.js', 'REST APIs'],
     icon: Cloud,
   },
   {
-    title: 'AI-Powered Development',
-    items: ['Language-Agnostic AI Development', 'Prompt Engineering', 'OpenAI API', 'LLM Integration'],
-    icon: Cpu,
-  },
-  {
     title: 'Database',
-    items: ['PostgreSQL', 'MongoDB', 'SQLite', 'Supabase', 'SQL Optimization'],
+    items: ['PostgreSQL', 'MySQL', 'Supabase', 'MongoDB', 'SQLite'],
     icon: Database,
   },
   {
-    title: 'Tools & Workflow',
-    items: ['Git', 'Figma', 'Postman', 'Agile / Scrum', 'Technical Documentation'],
+    title: 'Tools',
+    items: ['Git', 'GitHub', 'Vercel', 'Tauri', 'Figma', 'Postman'],
     icon: GitBranch,
   },
   {
     title: 'IT Support & Networking',
-    items: ['IT Support', 'PC Building', 'Troubleshooting', 'Active Directory', 'Windows Server', 'Networking Basics', 'Hardware & Software Support'],
+    items: ['IT Support', 'PC Building', 'Troubleshooting', 'Active Directory', 'Windows Server', 'Networking Basics'],
     icon: Network,
+  },
+  {
+    title: 'Currently Learning',
+    items: ['Rust', 'Language-Agnostic AI Development', 'OpenAI API', 'LLM Integration'],
+    icon: Cpu,
   },
 ];
 
