@@ -142,7 +142,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         }}
         .item-details {{
             margin: 0;
-            padding-left: 14px;
+            padding-left: 20px;
             color: #334155;
             font-size: 0.9em;
         }}
@@ -192,7 +192,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         .project-description {{
             color: #334155;
             margin: 0;
-            padding-left: 14px;
+            padding-left: 20px;
             font-size: 0.9em;
         }}
         .project-description li {{
@@ -215,7 +215,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
 <body>
     <div class="header">
         <h1 class="name">John Vincent G. Laylo</h1>
-        <div class="title">Developer, Business Analyst & IT Support Professional</div>
+        <div class="title">Developer &bull; Business Analyst &bull; IT Support</div>
         <div class="contact-info">
             <span>Email: <a href="mailto:zvincent.dev@gmail.com">zvincent.dev@gmail.com</a></span>
             <span class="separator">|</span>
@@ -235,7 +235,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         <div class="section-title">Professional Summary</div>
         <div class="section-content">
             <p class="summary-text">
-                Detail-oriented Developer, Business Analyst, and IT Support Professional with a Bachelor of Science in Information Technology (Major in Business Analytics). Experienced in bridging technical complexity and business objectives by designing, building, and deploying scalable, user-focused web applications. Proven track record in providing Tier-1 IT support, setting up workstations, automating operations, and maintaining robust system documentation.
+                I'm a BSIT graduate majoring in Business Analytics, focusing on software development, business analysis, and IT support. I enjoy building practical applications that solve real problems and improve daily workflows. Alongside development, I have hands-on experience troubleshooting technical issues, setting up workstations, and automating everyday tasks.
             </p>
         </div>
     </div>
@@ -245,28 +245,28 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
         <div class="section-content">
             <div class="skills-container">
                 <div class="skill-group">
-                    <div class="skill-label">Web & Desktop Dev:</div>
-                    <div class="skill-list">React, Next.js, Tauri, TypeScript, Tailwind CSS, Zustand, ShadCN</div>
+                    <div class="skill-label">Frontend:</div>
+                    <div class="skill-list">React, Next.js, TypeScript, Tailwind CSS, Zustand, ShadCN</div>
                 </div>
                 <div class="skill-group">
-                    <div class="skill-label">Backend & Systems:</div>
-                    <div class="skill-list">Node.js, Rust, Express.js, REST APIs, Vercel, CI/CD</div>
-                </div>
-                <div class="skill-group">
-                    <div class="skill-label">AI & Automation:</div>
-                    <div class="skill-list">Prompt Engineering, OpenAI API, LLM Integration</div>
+                    <div class="skill-label">Backend:</div>
+                    <div class="skill-list">Node.js, Express.js, REST APIs</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Database Systems:</div>
-                    <div class="skill-list">PostgreSQL, MongoDB, SQLite, MySQL, Supabase, SQL Optimization</div>
+                    <div class="skill-list">PostgreSQL, MySQL, Supabase, MongoDB, SQLite</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Tools & Workflows:</div>
-                    <div class="skill-list">Git, Figma, Postman, Agile / Scrum, Tech Documentation</div>
+                    <div class="skill-list">Git, GitHub, Vercel, Tauri, Figma, Postman</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">IT Support & Networks:</div>
-                    <div class="skill-list">IT Support, PC Building, Troubleshooting, Active Directory, Windows Server, Hardware/Software</div>
+                    <div class="skill-list">IT Support, PC Building, Troubleshooting, Active Directory, Windows Server, Networking Basics</div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-label">Currently Learning:</div>
+                    <div class="skill-list">Rust, Language-Agnostic AI Development, OpenAI API, LLM Integration</div>
                 </div>
             </div>
         </div>
@@ -275,6 +275,22 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
     <div class="section">
         <div class="section-title">Professional Experience</div>
         <div class="section-content">
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <span class="item-role">Founder & Lead Developer</span>
+                        <span class="separator">|</span>
+                        <span class="item-company-school"><a href="https://kasapi-connect.vercel.app/" target="_blank" style="color: inherit; text-decoration: underline;">Kasapi Connect</a> <a href="https://kasapi-connect.vercel.app/" target="_blank" style="font-size: 0.9em; font-weight: 500; font-style: italic; color: #64748b; text-decoration: none;">(kasapi-connect.vercel.app)</a></span>
+                    </div>
+                    <div class="item-location-date">2026 - Present</div>
+                </div>
+                <ul class="item-details">
+                    <li><span class="bullet-title">System Architecture:</span> Architected and built an offline-first smart gym management desktop application using Tauri and React.</li>
+                    <li><span class="bullet-title">Backend & Database:</span> Designed robust data models and integrated local SQLite storage for seamless, lightning-fast offline operation.</li>
+                    <li><span class="bullet-title">Core Features:</span> Developed automated QR check-ins, an integrated Point of Sale (POS) system, and instant analytics dashboards.</li>
+                    <li><span class="bullet-title">Product Strategy:</span> Directed the UI/UX design of a high-conversion landing page and orchestrated the product launch.</li>
+                </ul>
+            </div>
             <div class="item">
                 <div class="item-header">
                     <div>
@@ -314,20 +330,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
     <div class="section">
         <div class="section-title">Key Projects</div>
         <div class="section-content">
-            <div class="project-item">
-                <div class="project-header">
-                    <div class="project-title-tech">
-                        <strong>Kasapi Connect</strong> <span class="project-tech">(Tauri, React, SQLite, Tailwind)</span>
-                    </div>
-                    <div>
-                        <a class="project-link" href="https://kasapi-connect.vercel.app/" target="_blank">kasapi-connect.vercel.app</a>
-                    </div>
-                </div>
-                <ul class="project-description">
-                    <li>Smart gym management software built to arm independent gyms with enterprise firepower, replacing expensive SaaS subscriptions.</li>
-                    <li>Developed an offline-first desktop application with a lifetime license, featuring automated QR attendance, Point of Sale, and secure data storage.</li>
-                </ul>
-            </div>
+
             <div class="project-item">
                 <div class="project-header">
                     <div class="project-title-tech">
@@ -453,16 +456,23 @@ def compile_pdf(padding_val="10px", margin_val="0.5in", font_size_body="10pt"):
 # Search for the right font size to hit exactly 1 page
 params = [
     # (padding, margin, font_size)
+    ("15px", "0.5in", "10.5pt"),
+    ("14px", "0.5in", "10.2pt"),
     ("12px", "0.5in", "10pt"),
-    ("10px", "0.45in", "9.8pt"),
-    ("8px", "0.45in", "9.5pt"),
-    ("7px", "0.4in", "9.2pt"),
-    ("6px", "0.38in", "9.2pt"),
-    ("5px", "0.35in", "9.2pt"),
-    ("4px", "0.35in", "9.1pt"),
-    ("4px", "0.35in", "9pt"),
-    ("4px", "0.35in", "8.8pt"),
-    ("5px", "0.35in", "8.5pt"),
+    ("12px", "0.5in", "9.8pt"),
+    ("10px", "0.45in", "9.7pt"),
+    ("10px", "0.45in", "9.6pt"),
+    ("10px", "0.45in", "9.5pt"),
+    ("10px", "0.45in", "9.4pt"),
+    ("8px", "0.45in", "9.3pt"),
+    ("8px", "0.45in", "9.2pt"),
+    ("8px", "0.4in", "9.1pt"),
+    ("8px", "0.4in", "9.0pt"),
+    ("6px", "0.38in", "8.9pt"),
+    ("6px", "0.38in", "8.8pt"),
+    ("5px", "0.35in", "8.7pt"),
+    ("5px", "0.35in", "8.6pt"),
+    ("4px", "0.35in", "8.5pt"),
 ]
 
 success = False
