@@ -20,6 +20,12 @@ interface EducationEntry {
 const education: EducationEntry[] = [
   {
     period: '2026',
+    degree: 'Japanese Language and Culture',
+    school: 'LCTI Lipa City Training Institute',
+    details: 'Completed Japanese language and cultural training, developing basic conversational and written proficiency. Official certificate issuance scheduled for December 2026.',
+  },
+  {
+    period: '2026',
     degree: 'Computer Systems Servicing NC II',
     school: 'LCTI Lipa City Training Institute',
     details: 'National Certificate II certification program covering computer systems assembly, hardware/software configuration, networking setups, and systematic diagnostics & troubleshooting.',

@@ -363,9 +363,22 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
     </div>
 
     <div class="section">
-        <div class="section-title">Education</div>
+        <div class="section-title">Education & Training</div>
         <div class="section-content">
             <div class="item">
+                <div class="item-header">
+                    <div>
+                        <span class="item-role">Japanese Language & Culture</span>
+                        <span class="separator">|</span>
+                        <span class="item-company-school">LCTI Lipa City Training Institute</span>
+                    </div>
+                    <div class="item-location-date">2026</div>
+                </div>
+                <div class="education-subtext">
+                    Basic Japanese language and cultural training. <em>(Certificate issuance scheduled for Dec 2026)</em>
+                </div>
+            </div>
+            <div class="item" style="margin-top: 4px;">
                 <div class="item-header">
                     <div>
                         <span class="item-role">Computer Systems Servicing NC II</span>
@@ -416,7 +429,7 @@ def get_html_content(padding_val="10px", margin_val="0.5in", font_size_body="10p
             <div class="skills-container">
                 <div class="skill-group">
                     <div class="skill-label">Languages:</div>
-                    <div class="skill-list">English (Fluent), Filipino (Native)</div>
+                    <div class="skill-list">English (Fluent), Filipino (Native), Japanese (Basic)</div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-label">Key Strengths:</div>
